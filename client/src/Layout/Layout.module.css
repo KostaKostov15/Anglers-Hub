@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: auto auto 1fr auto;
-    background-color: rgb(252 165 165);
     width: 100%;
     min-height: 100vh;
 }

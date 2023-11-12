@@ -7,10 +7,35 @@
     padding-left: 1rem;
     padding-right: 1rem;
     height: 3.75rem;
-    background-color: rgb(74 222 128);
 }
 
 .site-navbar ul {
     display: flex;
     gap: 1rem;
+}
+
+.site-navbar li {
+    border: 1px solid #e5e5e5;
+    border-radius: 2rem;
+    transition-duration: 0.5s;
+}
+
+.site-navbar li:hover {
+    background-color: #def1ff;
+    border-color: #def1ff;
+}
+
+.site-navbar li:active {
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+}
+
+.site-navbar li a {
+    display: flex;
+    color: #065fd4;
+    padding: 0.3rem 0.8rem;
+}
+
+.site-navbar li a span {
+    padding-left: 0.3em;
 }
