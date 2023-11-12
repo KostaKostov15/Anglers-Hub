@@ -1,0 +1,9 @@
+.site-navbar {
+    display: flex;
+    align-items: center;
+    grid-column: span 12 / span 12;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 3.75rem;
+    background-color: rgb(74 222 128);
+}

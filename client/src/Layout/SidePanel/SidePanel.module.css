@@ -1,0 +1,11 @@
+.site-side-panel {
+    grid-column: span 12 / span 12;
+    background-color: rgb(253 186 116);
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .site-side-panel {
+        grid-column: span 2 / span 2;
+    }
+}

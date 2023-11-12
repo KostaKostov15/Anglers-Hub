@@ -1,0 +1,11 @@
+.site-footer {
+    display: flex;
+    align-items: center;
+    grid-area: ft;
+    grid-column: span 12 / span 12;
+    height: 3.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: rgb(74 222 128);
+    margin-top: auto;
+}

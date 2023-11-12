@@ -1,7 +1,9 @@
+import styles from './Content.module.css';
+
 const Content = () => {
     return (
-        <div id='content' className='col-span-12 md:col-span-10 bg-blue-300 h-[calc(100vh-3.75rem)] p-4'>
-            Content
+        <div id='content' className={styles['site-content']}>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed, deleniti.</p>
         </div>
     );
 };

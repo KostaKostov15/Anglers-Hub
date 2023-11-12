@@ -1,13 +1,17 @@
 import Navbar from './Navbar/Navbar';
 import SidePanel from './SidePanel/SidePanel';
 import Content from './Content/Content';
+import Footer from './Footer/Footer';
+
+import styles from './Layout.module.css';
 
 const Layout = () => {
     return (
-        <div className='grid grid-cols-12 gap-2 w-full h-screen bg-red-300'>
+        <div className={styles.container}>
             <Navbar />
             <SidePanel />
             <Content />
+            <Footer />
         </div>
     );
 };

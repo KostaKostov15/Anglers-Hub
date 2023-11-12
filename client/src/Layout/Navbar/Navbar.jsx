@@ -1,6 +1,8 @@
+import styles from './Navbar.module.css';
+
 const Navbar = () => {
     return (
-        <div id='navbar' className='col-span-12 h-[3.75rem] bg-green-400 px-4 flex items-center'>
+        <div id='navbar' className={styles['site-navbar']}>
             Navbar
         </div>
     );
