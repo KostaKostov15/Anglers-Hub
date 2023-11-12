@@ -1,9 +1,18 @@
 import styles from './Navbar.module.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div id='navbar' className={styles['site-navbar']}>
-            Navbar
+            <h2>Navbar</h2>
+            <ul>
+                <li>
+                    <Link to='/'>Home</Link>
+                </li>
+                <li>
+                    <Link to='/about'>About</Link>
+                </li>
+            </ul>
         </div>
     );
 };

@@ -1,9 +1,16 @@
 .site-navbar {
     display: flex;
+    gap: 2rem;
     align-items: center;
+    justify-content: space-between;
     grid-column: span 12 / span 12;
     padding-left: 1rem;
     padding-right: 1rem;
     height: 3.75rem;
     background-color: rgb(74 222 128);
+}
+
+.site-navbar ul {
+    display: flex;
+    gap: 1rem;
 }
