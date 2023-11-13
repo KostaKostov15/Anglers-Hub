@@ -39,3 +39,28 @@
 .site-navbar li a span {
     padding-left: 0.3em;
 }
+
+.site-title {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.site-title h2 {
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    color: #065fd4;
+    letter-spacing: 2px;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.site-logo img {
+    width: 100%;
+    height: auto;
+}

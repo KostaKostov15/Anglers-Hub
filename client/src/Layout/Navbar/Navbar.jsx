@@ -1,10 +1,18 @@
 import styles from './Navbar.module.css';
+import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div id='navbar' className={styles['site-navbar']}>
-            <h2>Navbar</h2>
+            <div className={styles['site-title']}>
+                <div className={styles['site-logo']}>
+                    <Link to='/'>
+                        <img src={logo} alt='Site Logo' />
+                    </Link>
+                </div>
+                <h2>AnglersHub</h2>
+            </div>
             <ul>
                 <li>
                     <Link to='/'>Home</Link>
