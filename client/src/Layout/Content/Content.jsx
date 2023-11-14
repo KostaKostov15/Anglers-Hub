@@ -1,7 +1,7 @@
-import About from '../../pages/About';
-import Home from '../../pages/Home';
-import LogIn from '../../pages/LogIn';
-import Register from '../../pages/Register';
+import About from '../../pages/About/About';
+import Home from '../../pages/Home/Home';
+import LogIn from '../../pages/Login/Login';
+import Register from '../../pages/Register/Register';
 import styles from './Content.module.css';
 import { Routes, Route } from 'react-router-dom';
 
