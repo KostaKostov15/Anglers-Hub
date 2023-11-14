@@ -1,7 +1,32 @@
+import { useState } from 'react';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
-const LogIn = () => {
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const emailChangeHandler = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const passwordChangeHandler = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
+    };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        // TODO: Make POST request to server with user data
+        console.log(email, password);
+        resetForm();
+    };
+
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
@@ -12,7 +37,7 @@ const LogIn = () => {
             </div>
 
             <div className='mt-9 sm:mx-auto sm:w-full sm:max-w-sm'>
-                <form className='space-y-6' method='POST'>
+                <form onSubmit={submitHandler} className='space-y-6'>
                     <div>
                         <label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
                             Email address
@@ -22,7 +47,8 @@ const LogIn = () => {
                                 id='email'
                                 name='email'
                                 type='email'
-                                autoComplete='email'
+                                onChange={emailChangeHandler}
+                                value={email}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
@@ -40,7 +66,8 @@ const LogIn = () => {
                                 id='password'
                                 name='password'
                                 type='password'
-                                autoComplete='current-password'
+                                onChange={passwordChangeHandler}
+                                value={password}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
@@ -69,4 +96,4 @@ const LogIn = () => {
     );
 };
 
-export default LogIn;
+export default Login;
