@@ -1,7 +1,21 @@
 .site-side-panel {
     grid-column: span 12 / span 12;
-    background-color: rgb(253 186 116);
-    padding: 1rem;
+    border-right: 1px solid #ddd;
+}
+
+.site-side-panel ul a {
+    display: flex;
+    gap: 0.5em;
+    font-family: 'Raleway', sans-serif;
+    padding: 0.3em 0.3em;
+    margin: 0.3em 0.3em;
+    font-size: 1.2em;
+    transition-duration: 0.3s;
+}
+
+.site-side-panel ul a:hover {
+    background-color: #f1f1f1;
+    border-radius: 0.4em;
 }
 
 @media (min-width: 768px) {

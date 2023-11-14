@@ -6,9 +6,7 @@ const Register = () => {
         <div className='flex min-h-full flex-1 flex-col justify-center'>
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
                 <img className='mx-auto h-12 w-auto' src={logo} alt='Site Logo' />
-                <h2 className='mt-9 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
-                    Sign up your account
-                </h2>
+                <h2 className='mt-9 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>Sign Up</h2>
             </div>
 
             <div className='mt-9 sm:mx-auto sm:w-full sm:max-w-sm'>
