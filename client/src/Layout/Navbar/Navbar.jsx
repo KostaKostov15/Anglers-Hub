@@ -6,20 +6,14 @@ const Navbar = () => {
     return (
         <div id='navbar' className={styles['site-navbar']}>
             <div className={styles['site-title']}>
-                <div className={styles['site-logo']}>
-                    <Link to='/'>
+                <Link to='/'>
+                    <div className={styles['site-logo']}>
                         <img src={logo} alt='Site Logo' />
-                    </Link>
-                </div>
-                <h2>AnglersHub</h2>
+                    </div>
+                    <h2>AnglersHub</h2>
+                </Link>
             </div>
             <ul>
-                <li>
-                    <Link to='/'>Home</Link>
-                </li>
-                <li>
-                    <Link to='/about'>About</Link>
-                </li>
                 <li>
                     <Link to='/users/login'>
                         <svg

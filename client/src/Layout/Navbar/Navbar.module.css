@@ -40,15 +40,16 @@
     padding-left: 0.3em;
 }
 
-.site-title {
+.site-title a {
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .site-title h2 {
     font-size: 1.5em;
-    font-weight: 300;
+    font-weight: 500;
+    font-style: italic;
     font-family: 'Raleway', sans-serif;
     text-transform: capitalize;
     color: #065fd4;
@@ -63,4 +64,10 @@
 .site-logo img {
     width: 100%;
     height: auto;
+}
+
+@media (width < 640px) {
+    .site-title a h2 {
+        display: none;
+    }
 }
