@@ -1,7 +1,7 @@
 import styles from './Navbar.module.css';
 import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
-import { UserCircleIcon } from '@heroicons/react/24/outline';
+import { UserCircleIcon, UserPlusIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
     return (
@@ -18,7 +18,13 @@ const Navbar = () => {
                 <li>
                     <Link to='/users/login'>
                         <UserCircleIcon className='h-6 w-6'></UserCircleIcon>
-                        <span>Sign In</span>
+                        <span>Log In</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/users/register'>
+                        <UserPlusIcon className='h-6 w-6'></UserPlusIcon>
+                        <span>Sign Up</span>
                     </Link>
                 </li>
             </ul>

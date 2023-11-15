@@ -1,9 +1,5 @@
 .site-side-panel {
     grid-column: span 12 / span 12;
-
-    position: sticky;
-    top: 3.75rem;
-    background-color: #fff;
     align-self: start;
 }
 
@@ -30,5 +26,8 @@
 @media (min-width: 768px) {
     .site-side-panel {
         grid-column: span 2 / span 2;
+        position: sticky;
+        top: 3.75rem;
+        background-color: #fff;
     }
 }
