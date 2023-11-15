@@ -12,15 +12,19 @@ const Register = () => {
     const [formData, setFormData] = useState(defaultFormData);
 
     const changeHandler = (e) => {
+        const { name, value } = e.target;
+
         setFormData((oldValue) => ({
             ...oldValue,
-            [e.target.name]: e.target.value,
+            [name]: value,
         }));
     };
 
     const submitHandler = (e) => {
         e.preventDefault();
+
         console.log(formData);
+
         setFormData(defaultFormData);
     };
 
