@@ -1,6 +1,10 @@
 .site-side-panel {
     grid-column: span 12 / span 12;
-    border-right: 1px solid #ddd;
+
+    position: sticky;
+    top: 3.75rem;
+    background-color: #fff;
+    align-self: start;
 }
 
 .site-side-panel ul a {
@@ -15,6 +19,11 @@
 
 .site-side-panel ul a:hover {
     background-color: #f1f1f1;
+    border-radius: 0.4em;
+}
+
+.site-side-panel ul a.active {
+    background-color: #def1ff;
     border-radius: 0.4em;
 }
 

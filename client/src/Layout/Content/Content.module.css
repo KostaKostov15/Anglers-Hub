@@ -1,6 +1,8 @@
 .site-content {
     grid-column: span 12 / span 12;
     padding: 1rem;
+    overflow: hidden;
+    border-left: 1px solid #ddd;
 }
 
 @media (min-width: 768px) {
