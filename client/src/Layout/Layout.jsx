@@ -3,12 +3,13 @@ import SidePanel from './SidePanel/SidePanel';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
 
-import styles from './Layout.module.css';
 import AuthContext from '../contexts/authContext';
+
+import styles from './Layout.module.css';
 
 const Layout = () => {
     return (
-        <AuthContext.Provider value={'test'}>
+        <AuthContext.Provider value={'test-context'}>
             <div className={styles.container}>
                 <Navbar />
                 <SidePanel />

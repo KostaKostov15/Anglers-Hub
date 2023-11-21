@@ -1,37 +1,32 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
-
-import logo from '../../assets/logo.png';
+import useForm from '../../hooks/useForm';
 import Path from '../../paths';
 
-const defaultFormData = {
+import logo from '../../assets/logo.png';
+
+const defaultFormValues = {
     email: '',
     password: '',
     rePassword: '',
 };
 
 const Register = () => {
-    const [formData, setFormData] = useState(defaultFormData);
+    const navigate = useNavigate();
 
-    const changeHandler = (e) => {
-        const { name, value } = e.target;
+    const registerSubmitHandler = async (values) => {
+        // TODO - Need to add try catch for error handling
+        const result = await authService.register(values.email, values.password);
 
-        setFormData((oldValue) => ({
-            ...oldValue,
-            [name]: value,
-        }));
-    };
-
-    const submitHandler = async (e) => {
-        e.preventDefault();
-
-        const result = await authService.register(formData.email, formData.password);
         console.log(result);
 
-        setFormData(defaultFormData);
+        // TODO - Clear Form data after successful user creation in DB
+
+        navigate(Path.Home);
     };
+
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, defaultFormValues);
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
@@ -43,7 +38,7 @@ const Register = () => {
             </div>
 
             <div className='mt-9 sm:mx-auto sm:w-full sm:max-w-sm'>
-                <form onSubmit={submitHandler} className='space-y-6'>
+                <form onSubmit={onSubmit} className='space-y-6'>
                     <div>
                         <label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
                             Email address
@@ -53,8 +48,8 @@ const Register = () => {
                                 id='email'
                                 name='email'
                                 type='email'
-                                value={formData.email}
-                                onChange={changeHandler}
+                                value={values.email}
+                                onChange={onChange}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
@@ -72,8 +67,8 @@ const Register = () => {
                                 id='password'
                                 name='password'
                                 type='password'
-                                value={formData.password}
-                                onChange={changeHandler}
+                                value={values.password}
+                                onChange={onChange}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
@@ -91,8 +86,8 @@ const Register = () => {
                                 id='rePassword'
                                 name='rePassword'
                                 type='password'
-                                value={formData.rePassword}
-                                onChange={changeHandler}
+                                value={values.rePassword}
+                                onChange={onChange}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
