@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
+
+import logo from '../../assets/logo.png';
+import Path from '../../paths';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -23,7 +25,6 @@ const Login = () => {
         e.preventDefault();
 
         // TODO: Make POST request to server with user data
-        console.log(email, password);
         resetForm();
     };
 
@@ -85,9 +86,7 @@ const Login = () => {
 
                 <p className='mt-9 text-center text-sm text-gray-500'>
                     Not a member?{' '}
-                    <Link
-                        to='/users/register'
-                        className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
+                    <Link to={Path.Register} className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
                         Sign Up
                     </Link>
                 </p>

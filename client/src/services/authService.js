@@ -8,10 +8,10 @@ export async function login(email, password) {
         password,
     });
 
+    console.log(result);
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userId', result._id);
     sessionStorage.setItem('email', result.email);
-    sessionStorage.setItem('user', result);
 
     return result;
 }
@@ -25,7 +25,6 @@ export async function register(email, password) {
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userId', result._id);
     sessionStorage.setItem('email', result.email);
-    sessionStorage.setItem('user', result);
 
     return result;
 }

@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import * as authService from '../../services/authService';
+
 import logo from '../../assets/logo.png';
+import Path from '../../paths';
 
 const defaultFormData = {
     email: '',
@@ -21,10 +24,11 @@ const Register = () => {
         }));
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
-        console.log(formData);
+        const result = await authService.register(formData.email, formData.password);
+        console.log(result);
 
         setFormData(defaultFormData);
     };
@@ -106,7 +110,7 @@ const Register = () => {
 
                 <p className='mt-9 text-center text-sm text-gray-500'>
                     Already a member?{' '}
-                    <Link to='/users/login' className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
+                    <Link to={Path.Login} className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
                         Sign In
                     </Link>
                 </p>
