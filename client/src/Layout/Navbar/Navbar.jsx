@@ -6,6 +6,7 @@ import AuthContext from '../../contexts/authContext';
 import styles from './Navbar.module.css';
 import logo from '../../assets/logo.png';
 import { UserCircleIcon, UserPlusIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import Path from '../../paths';
 
 const Navbar = () => {
     const { isAuthenticated, logoutHandler } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Navbar = () => {
     return (
         <div id='navbar' className={styles['site-navbar']}>
             <div className={styles['site-title']}>
-                <Link to='/'>
+                <Link to={Path.Home}>
                     <div className={styles['site-logo']}>
                         <img src={logo} alt='Site Logo' />
                     </div>
@@ -24,13 +25,13 @@ const Navbar = () => {
                 {!isAuthenticated && (
                     <>
                         <li>
-                            <Link to='/users/login'>
+                            <Link to={Path.Login}>
                                 <UserCircleIcon className='h-6 w-6'></UserCircleIcon>
                                 <span>Log In</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to='/users/register'>
+                            <Link to={Path.Register}>
                                 <UserPlusIcon className='h-6 w-6'></UserPlusIcon>
                                 <span>Sign Up</span>
                             </Link>
