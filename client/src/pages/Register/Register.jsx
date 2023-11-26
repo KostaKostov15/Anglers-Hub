@@ -1,7 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
-import * as authService from '../../services/authService';
 import useForm from '../../hooks/useForm';
+import AuthContext from '../../contexts/authContext';
 import Path from '../../paths';
 
 import logo from '../../assets/logo.png';
@@ -13,16 +14,7 @@ const defaultFormValues = {
 };
 
 const Register = () => {
-    const navigate = useNavigate();
-
-    const registerSubmitHandler = async (values) => {
-        // TODO - Need to add try catch for error handling
-        const result = await authService.register(values.email, values.password);
-        console.log(result);
-
-        // TODO - Clear Form data after successful user creation in DB
-        navigate(Path.Home);
-    };
+    const { registerSubmitHandler } = useContext(AuthContext);
 
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, defaultFormValues);
 

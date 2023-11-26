@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 
 const { register, login, logout } = require('../services/userService');
 const { parseError } = require('../util/errorParser');
+const { hasUser, isGuest } = require('../middlewares/guards');
 
 authController.post(
     '/register',

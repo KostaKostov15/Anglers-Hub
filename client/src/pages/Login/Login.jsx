@@ -6,12 +6,14 @@ import logo from '../../assets/logo.png';
 import Path from '../../paths';
 import useForm from '../../hooks/useForm';
 
+const defaultFormValues = {
+    email: '',
+    password: '',
+};
+
 const Login = () => {
     const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        email: '',
-        password: '',
-    });
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, defaultFormValues);
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>

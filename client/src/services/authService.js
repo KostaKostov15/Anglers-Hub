@@ -8,10 +8,6 @@ export async function login(email, password) {
         password,
     });
 
-    // localStorage.setItem('authToken', result.accessToken);
-    // localStorage.setItem('userId', result._id);
-    // localStorage.setItem('email', result.email);
-
     return result;
 }
 
@@ -21,19 +17,13 @@ export async function register(email, password) {
         password,
     });
 
-    // localStorage.setItem('authToken', result.accessToken);
-    // localStorage.setItem('userId', result._id);
-    // localStorage.setItem('email', result.email);
-
     return result;
 }
 
 export async function logout() {
     const result = await request.get(host + '/users/logout');
 
-    // localStorage.removeItem('email');
-    // localStorage.removeItem('authToken');
-    // localStorage.removeItem('userId');
+    localStorage.removeItem('auth');
 
     return result;
 }

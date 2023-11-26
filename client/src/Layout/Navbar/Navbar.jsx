@@ -8,7 +8,7 @@ import logo from '../../assets/logo.png';
 import { UserCircleIcon, UserPlusIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, logoutHandler } = useContext(AuthContext);
 
     return (
         <div id='navbar' className={styles['site-navbar']}>
@@ -40,7 +40,7 @@ const Navbar = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link to='#'>
+                        <Link onClick={logoutHandler}>
                             <ArrowLeftOnRectangleIcon className='h-6 w-6'></ArrowLeftOnRectangleIcon>
                             <span>Logout</span>
                         </Link>
