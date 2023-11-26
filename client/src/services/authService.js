@@ -8,10 +8,9 @@ export async function login(email, password) {
         password,
     });
 
-    console.log(result);
-    sessionStorage.setItem('authToken', result.accessToken);
-    sessionStorage.setItem('userId', result._id);
-    sessionStorage.setItem('email', result.email);
+    // localStorage.setItem('authToken', result.accessToken);
+    // localStorage.setItem('userId', result._id);
+    // localStorage.setItem('email', result.email);
 
     return result;
 }
@@ -22,9 +21,9 @@ export async function register(email, password) {
         password,
     });
 
-    sessionStorage.setItem('authToken', result.accessToken);
-    sessionStorage.setItem('userId', result._id);
-    sessionStorage.setItem('email', result.email);
+    // localStorage.setItem('authToken', result.accessToken);
+    // localStorage.setItem('userId', result._id);
+    // localStorage.setItem('email', result.email);
 
     return result;
 }
@@ -32,9 +31,9 @@ export async function register(email, password) {
 export async function logout() {
     const result = await request.get(host + '/users/logout');
 
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('authToken');
-    sessionStorage.removeItem('userId');
+    // localStorage.removeItem('email');
+    // localStorage.removeItem('authToken');
+    // localStorage.removeItem('userId');
 
     return result;
 }

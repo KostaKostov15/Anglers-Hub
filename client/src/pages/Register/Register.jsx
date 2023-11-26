@@ -18,11 +18,9 @@ const Register = () => {
     const registerSubmitHandler = async (values) => {
         // TODO - Need to add try catch for error handling
         const result = await authService.register(values.email, values.password);
-
         console.log(result);
 
         // TODO - Clear Form data after successful user creation in DB
-
         navigate(Path.Home);
     };
 

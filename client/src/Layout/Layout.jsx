@@ -3,20 +3,20 @@ import SidePanel from './SidePanel/SidePanel';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
 
-import AuthContext from '../contexts/authContext';
+import { AuthProvider } from '../contexts/authContext';
 
 import styles from './Layout.module.css';
 
 const Layout = () => {
     return (
-        <AuthContext.Provider value={'test-context'}>
+        <AuthProvider>
             <div className={styles.container}>
                 <Navbar />
                 <SidePanel />
                 <Content />
                 <Footer />
             </div>
-        </AuthContext.Provider>
+        </AuthProvider>
     );
 };
 

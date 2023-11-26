@@ -1,32 +1,17 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../contexts/authContext';
 
 import logo from '../../assets/logo.png';
 import Path from '../../paths';
+import useForm from '../../hooks/useForm';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const emailChangeHandler = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const passwordChangeHandler = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const resetForm = () => {
-        setEmail('');
-        setPassword('');
-    };
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-
-        // TODO: Make POST request to server with user data
-        resetForm();
-    };
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        email: '',
+        password: '',
+    });
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
@@ -38,7 +23,7 @@ const Login = () => {
             </div>
 
             <div className='mt-9 sm:mx-auto sm:w-full sm:max-w-sm'>
-                <form onSubmit={submitHandler} className='space-y-6'>
+                <form onSubmit={onSubmit} className='space-y-6'>
                     <div>
                         <label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
                             Email address
@@ -48,8 +33,8 @@ const Login = () => {
                                 id='email'
                                 name='email'
                                 type='email'
-                                onChange={emailChangeHandler}
-                                value={email}
+                                onChange={onChange}
+                                value={values.email}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
@@ -67,8 +52,8 @@ const Login = () => {
                                 id='password'
                                 name='password'
                                 type='password'
-                                onChange={passwordChangeHandler}
-                                value={password}
+                                onChange={onChange}
+                                value={values.password}
                                 required
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                             />
