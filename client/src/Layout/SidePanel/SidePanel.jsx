@@ -23,9 +23,9 @@ const SidePanel = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link className={path.pathname === Path.AddLocation ? styles.active : ''} to={Path.AddLocation}>
+                        <Link className={path.pathname === Path.AddCatch ? styles.active : ''} to={Path.AddCatch}>
                             <PlusCircleIcon className='h-6 w-6'></PlusCircleIcon>
-                            <span>Add location</span>
+                            <span>Add catch</span>
                         </Link>
                     </li>
                 )}
