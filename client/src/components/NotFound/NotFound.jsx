@@ -14,7 +14,7 @@ const NotFound = () => {
 
                     <Link
                         to={Path.Home}
-                        className='inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring'>
+                        className='inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-blue-400 rounded hover:bg-blue-500 focus:outline-none focus:ring'>
                         Go Back Home
                     </Link>
                 </div>
