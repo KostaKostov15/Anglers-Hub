@@ -10,6 +10,7 @@ import About from '../../components/About/About';
 
 import Path from '../../paths';
 import styles from './Content.module.css';
+import NotFound from '../../components/NotFound/NotFound';
 
 const Content = () => {
     return (
@@ -26,6 +27,8 @@ const Content = () => {
                 <Route element={<AuthGuard />}>
                     <Route path={Path.AddCatch} element={<AddCatch />} />
                 </Route>
+
+                <Route path='*' element={<NotFound />} />
             </Routes>
         </div>
     );
