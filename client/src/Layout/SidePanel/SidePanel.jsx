@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import AuthContext from '../../contexts/authContext';
+import { HomeIcon, InformationCircleIcon, PlusCircleIcon, GlobeEuropeAfricaIcon } from '@heroicons/react/24/outline';
 
-import { HomeIcon, InformationCircleIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
 import styles from './SidePanel.module.css';
 import Path from '../../paths';
 
@@ -18,6 +18,13 @@ const SidePanel = () => {
                     <Link className={path.pathname === Path.Home ? styles.active : ''} to={Path.Home}>
                         <HomeIcon className='h-6 w-6'></HomeIcon>
                         <span>Home</span>
+                    </Link>
+                </li>
+
+                <li>
+                    <Link className={path.pathname === Path.Browse ? styles.active : ''} to={Path.Browse}>
+                        <GlobeEuropeAfricaIcon className='h-6 w-6'></GlobeEuropeAfricaIcon>
+                        <span>Browse</span>
                     </Link>
                 </li>
 

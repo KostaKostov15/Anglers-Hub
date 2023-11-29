@@ -11,6 +11,7 @@ import About from '../../components/About/About';
 import Path from '../../paths';
 import styles from './Content.module.css';
 import NotFound from '../../components/NotFound/NotFound';
+import Browse from '../../components/Browse/Browse';
 
 const Content = () => {
     return (
@@ -18,6 +19,7 @@ const Content = () => {
             <Routes>
                 <Route path={Path.Home} element={<Home />} />
                 <Route path={Path.About} element={<About />} />
+                <Route path={Path.Browse} element={<Browse />} />
 
                 <Route element={<GuestGuard />}>
                     <Route path={Path.Login} element={<Login />} />
