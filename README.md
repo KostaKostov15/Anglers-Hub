@@ -11,8 +11,6 @@
 > This application is a fullstack implementation in MongoDB, Express, React, Node.js.
 
 
-Anglers-Hub is a Single Page Application build with MERN Stack.
-
 # Stack
 
 Database: MongoDB - [install](https://docs.mongodb.com/manual/installation/), [docs](https://docs.mongodb.com/manual/tutorial/getting-started/),
