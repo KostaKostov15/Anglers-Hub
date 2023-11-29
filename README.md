@@ -1,3 +1,19 @@
+<h1 align="center">
+🌐 Anglers-Hub
+</h1>
+
+<p align="center">
+   <a href="https://github.com/amazingandyyy/mern/blob/master/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-green.svg" />
+   </a>
+   <a href="https://circleci.com/gh/amazingandyyy/mern">
+      <img src="https://circleci.com/gh/amazingandyyy/mern.svg?style=svg" />
+   </a>
+</p>
+
+> This project is a fullstack implementation in MongoDB, Express, React, Node.js.
+
+
 # Anglers-Hub
 
 Anglers-Hub is a Single Page Application build with MERN Stack.
