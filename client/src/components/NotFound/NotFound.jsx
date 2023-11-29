@@ -8,14 +8,14 @@ const NotFound = () => {
                 <div className='text-center'>
                     <h1 className='font-black text-gray-200 text-9xl'>404</h1>
 
-                    <p className='text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>Uh-oh!</p>
+                    <p className='text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl'>Page not found</p>
 
-                    <p className='mt-4 text-gray-500'>We can&apos;t find that page.</p>
+                    <p className='mt-4 text-gray-500'>Sorry, we couldn&apos;t find the page you&apos;re looking for.</p>
 
                     <Link
                         to={Path.Home}
-                        className='inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-blue-400 rounded hover:bg-blue-500 focus:outline-none focus:ring'>
-                        Go Back Home
+                        className='inline-block px-5 py-2 mt-6 text-sm font-medium text-white bg-blue-400 rounded hover:bg-blue-500 focus:outline-none focus:ring'>
+                        Go back home
                     </Link>
                 </div>
             </div>

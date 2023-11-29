@@ -1,6 +1,6 @@
 import * as request from '../lib/api';
 
-const host = 'http://localhost:3000';
+const host = request.host;
 
 export async function login(email, password) {
     const result = await request.post(host + '/users/login', {

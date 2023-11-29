@@ -55,3 +55,5 @@ export async function put(url, data) {
 export async function del(url) {
     return await request(url, getOptions('delete'));
 }
+
+export const host = 'http://localhost:3000';

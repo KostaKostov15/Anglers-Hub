@@ -1,6 +1,12 @@
 import * as request from '../lib/api';
 
-const host = 'http://localhost:3000';
+const host = request.host;
+
+export async function getAll() {
+    const result = await request.get(host + '/data');
+
+    return result;
+}
 
 export async function create(data) {
     const result = await request.post(host + '/data', data);
