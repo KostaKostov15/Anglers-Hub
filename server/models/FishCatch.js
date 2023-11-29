@@ -17,7 +17,7 @@ const fishCatchSchema = new Schema({
         },
     },
     imageUrl: { type: String, required: [true, 'Image URL is required'] },
-    details: { type: String, minLength: [10, 'Details should be at least 10 characters'] },
+    details: { type: String },
     owner: { type: ObjectId, ref: 'User', required: true },
 });
 

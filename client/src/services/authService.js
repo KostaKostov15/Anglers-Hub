@@ -23,7 +23,5 @@ export async function register(email, password) {
 export async function logout() {
     const result = await request.get(host + '/users/logout');
 
-    localStorage.removeItem('auth');
-
     return result;
 }

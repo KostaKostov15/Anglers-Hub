@@ -26,9 +26,10 @@ function getOptions(method = 'get', body) {
         headers: {},
     };
 
-    const token = JSON.parse(localStorage.getItem('auth'));
-    if (token != null) {
-        options.headers['X-Authorization'] = token.accessToken;
+    const token = localStorage.getItem('auth');
+    if (token) {
+        const { accessToken } = JSON.parse(token);
+        options.headers['X-Authorization'] = accessToken;
     }
 
     if (body) {

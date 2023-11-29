@@ -14,6 +14,11 @@ export default function usePersistedState(key, defaultValue) {
     const setPersistedState = (value) => {
         setState(value);
 
+        if (value == 'logout') {
+            localStorage.removeItem(key);
+            return;
+        }
+
         let serializedValue;
 
         if (typeof value == 'function') {

@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import ReservoirNameInput from './FormEntries/ReservoirNameInput';
 import RegionInput from './FormEntries/RegionInput';
 import FishSpecieSelect from './FormEntries/FishSpecieSelect';
@@ -5,8 +8,8 @@ import FishWeightInput from './FormEntries/FishWeightInput';
 import ImageUrlInput from './FormEntries/ImageUrlInput';
 import DetailsInput from './FormEntries/DetailsInput';
 
-import { useState } from 'react';
 import { create } from '../../services/dataService';
+import Path from '../../paths';
 
 const formInitialState = {
     reservoirName: '',
@@ -18,6 +21,7 @@ const formInitialState = {
 };
 
 const AddCatch = () => {
+    const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
 
     const changeHandler = (e) => {
@@ -48,10 +52,11 @@ const AddCatch = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const result = await create(formValues);
-        console.log(result);
+        await create(formValues);
 
         resetFormHandler();
+
+        navigate(Path.Home);
     };
 
     return (
