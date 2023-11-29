@@ -28,13 +28,13 @@ Dump files can be found [here](https://github.com/KostaKostov15/Anglers-Hub/tree
 To start server, from inside the [server dir](https://github.com/KostaKostov15/Anglers-Hub/tree/main/server).
 Run following commands in terminal:
 
-**`
+```sh 
 npm install
-`**
+```
 
-**`
+```sh
 npm start
-`**
+```
 
 Server starts on http://localhost:3000/
 
@@ -43,12 +43,12 @@ Server starts on http://localhost:3000/
 To start client side view, form inside the [client dir](https://github.com/KostaKostov15/Anglers-Hub/tree/main/client).
 Run following commands in terminal:
 
-**`
+```sh
 npm install
-`**
+```
 
-**`
+```sh
 npm run dev
-`**
+```
 
 App starts on http://localhost:5173/
