@@ -29,7 +29,7 @@ async function start() {
     });
 
     app.use('/users', authController);
-    app.use('/data/catalog', dataController);
+    app.use('/data', dataController);
 
     app.listen(PORT, () => {
         console.log(`Server started on port: ${PORT}`);

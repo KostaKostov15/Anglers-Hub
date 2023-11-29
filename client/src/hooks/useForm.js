@@ -4,11 +4,22 @@ export default function useForm(submitHandler, initialValues) {
     const [values, setValues] = useState(initialValues);
 
     const onChange = (event) => {
+        let newValue = '';
+
         const { value, name } = event.target;
+
+        switch (event.target.type) {
+            case 'number':
+                newValue = Number(value);
+                break;
+            default:
+                newValue = value;
+                break;
+        }
 
         setValues((oldState) => ({
             ...oldState,
-            [name]: value,
+            [name]: newValue,
         }));
     };
 
@@ -16,6 +27,7 @@ export default function useForm(submitHandler, initialValues) {
         event.preventDefault();
 
         submitHandler(values);
+        setValues(initialValues);
     };
 
     return {

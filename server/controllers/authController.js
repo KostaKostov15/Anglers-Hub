@@ -3,12 +3,13 @@ const { body, validationResult } = require('express-validator');
 
 const { register, login, logout } = require('../services/userService');
 const { parseError } = require('../util/errorParser');
-const { hasUser, isGuest } = require('../middlewares/guards');
+const { isGuest, hasUser } = require('../middlewares/guards');
 
 authController.post(
     '/register',
     body('email').isEmail().withMessage('Invalid Email'),
     body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+    isGuest(),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);
@@ -25,7 +26,7 @@ authController.post(
     }
 );
 
-authController.post('/login', async (req, res) => {
+authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.email, req.body.password);
         res.json(token);
