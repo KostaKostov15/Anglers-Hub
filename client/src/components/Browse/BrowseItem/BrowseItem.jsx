@@ -1,9 +1,10 @@
 import { MapPinIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishWeight, fishSpecie }) {
     return (
-        <a key={_id} href={imageUrl} className='group border-2 rounded-lg overflow-hidden'>
+        <Link key={_id} to={`/data/${_id}/details`} className='group border-2 rounded-lg overflow-hidden'>
             <div className='aspect-h-1 aspect-w-1 w-full  overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
                 <img
                     src={imageUrl}
@@ -27,6 +28,6 @@ export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishW
                 <h3 className='text-sm font-semibold text-gray-600 pr-2'>{fishSpecie}</h3>
                 <p className='text-sm font-medium text-gray-600'>{fishWeight} kg</p>
             </div>
-        </a>
+        </Link>
     );
 }

@@ -6,6 +6,7 @@ import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
 import AddCatch from '../../components/AddCatch/AddCatch';
+import CatchDetails from '../../components/CatchDetails/CatchDetails';
 import About from '../../components/About/About';
 
 import Path from '../../paths';
@@ -20,6 +21,7 @@ const Content = () => {
                 <Route path={Path.Home} element={<Home />} />
                 <Route path={Path.About} element={<About />} />
                 <Route path={Path.Browse} element={<Browse />} />
+                <Route path={Path.CatchDetails} element={<CatchDetails />} />
 
                 <Route element={<GuestGuard />}>
                     <Route path={Path.Login} element={<Login />} />
