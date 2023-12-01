@@ -20,7 +20,7 @@ const formInitialState = {
     details: '',
 };
 
-const AddCatch = () => {
+const CatchCreate = () => {
     const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
 
@@ -110,4 +110,4 @@ const AddCatch = () => {
     );
 };
 
-export default AddCatch;
+export default CatchCreate;

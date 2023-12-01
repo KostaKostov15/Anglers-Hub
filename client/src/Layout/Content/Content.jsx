@@ -5,7 +5,7 @@ import GuestGuard from '../../guards/GuestGuard';
 import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
-import AddCatch from '../../components/AddCatch/AddCatch';
+import CatchCreate from '../../components/CatchCreate/CatchCreate';
 import CatchDetails from '../../components/CatchDetails/CatchDetails';
 import About from '../../components/About/About';
 
@@ -29,7 +29,7 @@ const Content = () => {
                 </Route>
 
                 <Route element={<AuthGuard />}>
-                    <Route path={Path.AddCatch} element={<AddCatch />} />
+                    <Route path={Path.CatchCreate} element={<CatchCreate />} />
                 </Route>
 
                 <Route path='*' element={<NotFound />} />

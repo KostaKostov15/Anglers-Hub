@@ -30,7 +30,7 @@ const SidePanel = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link className={path.pathname === Path.AddCatch ? styles.active : ''} to={Path.AddCatch}>
+                        <Link className={path.pathname === Path.CatchCreate ? styles.active : ''} to={Path.CatchCreate}>
                             <PlusCircleIcon className='h-6 w-6'></PlusCircleIcon>
                             <span>Add catch</span>
                         </Link>

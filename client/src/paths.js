@@ -4,7 +4,7 @@ const Path = {
     Register: '/users/register',
     Logout: '/users/logout',
     Browse: '/data/browse',
-    AddCatch: '/data/add-catch',
+    CatchCreate: '/data/add-catch',
     CatchDetails: '/data/:catchId/details',
     About: '/about',
 };
