@@ -13,3 +13,9 @@ export async function create(data) {
 
     return result;
 }
+
+export async function getById(id) {
+    const result = await request.get(host + '/data' + `/${id}`);
+
+    return result;
+}

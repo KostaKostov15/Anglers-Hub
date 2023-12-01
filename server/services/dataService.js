@@ -5,7 +5,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    return FishCatch.findById(id);
+    return FishCatch.findById(id).populate('owner').lean();
 }
 
 async function getByUserId(userId) {
