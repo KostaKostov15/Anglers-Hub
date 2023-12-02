@@ -14,6 +14,12 @@ export async function create(data) {
     return result;
 }
 
+export async function update(id, data) {
+    const result = await request.put(host + `/data/${id}`, data);
+
+    return result;
+}
+
 export async function getById(id) {
     const result = await request.get(host + '/data' + `/${id}`);
 

@@ -26,7 +26,9 @@ async function update(id, data) {
     existing.imageUrl = data.imageUrl;
     existing.details = data.details;
 
-    return existing.save();
+    await existing.save();
+
+    return await getById(id);
 }
 
 async function deleteById(id) {

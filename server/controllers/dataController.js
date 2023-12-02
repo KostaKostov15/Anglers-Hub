@@ -1,7 +1,7 @@
 const dataController = require('express').Router();
 const { hasUser } = require('../middlewares/guards');
 
-const { getAll, create, getById, deleteById } = require('../services/dataService');
+const { getAll, create, update, getById, deleteById } = require('../services/dataService');
 
 const { parseError } = require('../util/errorParser');
 
@@ -39,7 +39,7 @@ dataController.get('/:id', async (req, res) => {
 dataController.put('/:id', hasUser(), async (req, res) => {
     const item = await getById(req.params.id);
 
-    if (req.user._id != item.owner) {
+    if (req.user._id != item.owner._id) {
         return res.status(403).json({ message: 'You cannot modify this record' });
     }
 
