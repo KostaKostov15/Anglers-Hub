@@ -14,6 +14,12 @@ export async function getById(id) {
     return result;
 }
 
+export async function getAllByUserId(userId) {
+    const result = await request.get(host + `/data/user/${userId}`);
+
+    return result;
+}
+
 export async function getLatest() {
     const result = await request.get(host + '/data/latest');
 

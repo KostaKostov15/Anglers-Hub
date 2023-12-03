@@ -6,12 +6,12 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.profile-content {
+.profile-main {
     flex: 1 1 100%;
 }
 
 .profile-nav {
-    flex: 0 1 18%;
+    flex: 0 1 25%;
 }
 
 .profile-nav ul {

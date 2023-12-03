@@ -1,7 +1,7 @@
 const dataController = require('express').Router();
 const { hasUser } = require('../middlewares/guards');
 
-const { getAll, create, update, getById, deleteById, getLatest } = require('../services/dataService');
+const { getAll, getAllByUserId, create, update, getById, deleteById, getLatest } = require('../services/dataService');
 
 const { parseError } = require('../util/errorParser');
 
@@ -25,6 +25,26 @@ dataController.get('/latest', async (req, res) => {
     }
 });
 
+dataController.get('/:id', async (req, res) => {
+    try {
+        const data = await getById(req.params.id);
+        res.json(data);
+    } catch (err) {
+        const message = parseError(err);
+        res.status(404).json({ message });
+    }
+});
+
+dataController.get('/user/:userId', async (req, res) => {
+    try {
+        const data = await getAllByUserId(req.params.userId);
+        res.json(data);
+    } catch (err) {
+        const message = parseError(err);
+        res.status(404).json({ message });
+    }
+});
+
 dataController.post('/', hasUser(), async (req, res) => {
     try {
         const item = Object.assign({ owner: req.user._id }, req.body);
@@ -33,16 +53,6 @@ dataController.post('/', hasUser(), async (req, res) => {
     } catch (err) {
         const message = parseError(err);
         res.status(400).json({ message });
-    }
-});
-
-dataController.get('/:id', async (req, res) => {
-    try {
-        const data = await getById(req.params.id);
-        res.json(data);
-    } catch (err) {
-        const message = parseError(err);
-        res.status(404).json({ message });
     }
 });
 

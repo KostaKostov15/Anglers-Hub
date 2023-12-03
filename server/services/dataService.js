@@ -12,8 +12,8 @@ async function getById(id) {
     return FishCatch.findById(id).populate('owner').lean();
 }
 
-async function getByUserId(userId) {
-    return FishCatch.find({ owner: userId });
+async function getAllByUserId(userId) {
+    return FishCatch.find({ owner: userId }).populate('owner');
 }
 
 async function create(data) {
@@ -42,7 +42,7 @@ async function deleteById(id) {
 module.exports = {
     getAll,
     getById,
-    getByUserId,
+    getAllByUserId,
     getLatest,
     create,
     update,

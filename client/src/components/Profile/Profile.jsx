@@ -43,7 +43,7 @@ export default function Profile() {
                     </li>
                 </ul>
             </div>
-            <div className={styles['profile-content']}>
+            <div className={styles['profile-main']}>
                 <Outlet />
             </div>
         </div>

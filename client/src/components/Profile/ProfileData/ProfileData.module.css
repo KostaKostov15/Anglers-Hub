@@ -16,3 +16,17 @@
     width: 100%;
     height: auto;
 }
+
+.profile-content {
+    margin-top: 1rem;
+}
+
+.profile-content div span {
+    margin-right: 1rem;
+}
+
+.content-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 0.4rem;
+}
