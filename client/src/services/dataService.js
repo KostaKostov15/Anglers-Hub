@@ -8,6 +8,12 @@ export async function getAll() {
     return result;
 }
 
+export async function getLatest() {
+    const result = await request.get(host + '/data/latest');
+
+    return result;
+}
+
 export async function create(data) {
     const result = await request.post(host + '/data', data);
 
@@ -21,7 +27,7 @@ export async function update(id, data) {
 }
 
 export async function getById(id) {
-    const result = await request.get(host + '/data' + `/${id}`);
+    const result = await request.get(host + `/data/${id}`);
 
     return result;
 }

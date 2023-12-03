@@ -1,13 +1,23 @@
 const dataController = require('express').Router();
 const { hasUser } = require('../middlewares/guards');
 
-const { getAll, create, update, getById, deleteById } = require('../services/dataService');
+const { getAll, create, update, getById, deleteById, getLatest } = require('../services/dataService');
 
 const { parseError } = require('../util/errorParser');
 
 dataController.get('/', async (req, res) => {
     try {
         const data = await getAll();
+        res.json(data);
+    } catch (err) {
+        const message = parseError(err);
+        res.status(404).json(message);
+    }
+});
+
+dataController.get('/latest', async (req, res) => {
+    try {
+        const data = await getLatest();
         res.json(data);
     } catch (err) {
         const message = parseError(err);

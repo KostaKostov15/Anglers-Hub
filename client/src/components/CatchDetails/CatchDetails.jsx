@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { MapPinIcon } from '@heroicons/react/24/outline';
-
-import { getById } from '../../services/dataService';
+import CatchEdit from './CatchEdit/CatchEdit';
 import AuthContext from '../../contexts/authContext';
-import CatchEdit from '../CatchEdit/CatchEdit';
+import { getById } from '../../services/dataService';
+
+import { MapPinIcon } from '@heroicons/react/24/outline';
 
 // import { StarIcon } from '@heroicons/react/20/solid';
 
@@ -38,6 +38,11 @@ export default function CatchDetails() {
         setCatchDetails(data);
     };
 
+    const deleteClickHandler = () => {
+        const result = confirm('Are you sure?');
+        console.log(result);
+    };
+
     return (
         <>
             <CatchEdit
@@ -49,7 +54,7 @@ export default function CatchDetails() {
             />
             <div className='bg-white'>
                 {/* Product info */}
-                <div className='mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-4 lg:pt-4'>
+                <div className='mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-2 lg:pt-2'>
                     <div className='lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8'>
                         <h1 className='text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl'>
                             {catchDetails?.owner?.username}
@@ -68,8 +73,8 @@ export default function CatchDetails() {
                         </div>
 
                         <h2 className='sr-only'>Product information</h2>
-                        <p className='text-3xl tracking-tight text-gray-900 mt-6 text-center italic'>
-                            {catchDetails.fishSpecie} / {catchDetails.fishWeight}
+                        <p className='text-3xl tracking-tight text-gray-900 mt-5 text-center italic'>
+                            {catchDetails.fishSpecie} {catchDetails.fishWeight}
                             <span className='text-base uppercase'> kg</span>
                         </p>
 
@@ -94,11 +99,18 @@ export default function CatchDetails() {
                     </div> */}
 
                         {userId === catchDetails?.owner?._id ? (
-                            <button
-                                onClick={toggleEditModal}
-                                className='mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
-                                Edit
-                            </button>
+                            <>
+                                <button
+                                    onClick={toggleEditModal}
+                                    className='mt-5 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                                    Edit
+                                </button>
+                                <button
+                                    onClick={deleteClickHandler}
+                                    className='mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-2 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
+                                    Delete
+                                </button>
+                            </>
                         ) : null}
                     </div>
 

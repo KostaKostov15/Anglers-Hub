@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from 'react';
 
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { Dialog, Transition } from '@headlessui/react';
-import { update } from '../../services/dataService';
+import { update } from '../../../services/dataService';
 
 export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, updateCatchDetails }) {
     const [formValues, setFormValues] = useState({});

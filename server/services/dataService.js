@@ -4,6 +4,10 @@ async function getAll() {
     return FishCatch.find({});
 }
 
+async function getLatest() {
+    return FishCatch.find().sort({ createdAt: -1 }).limit(3);
+}
+
 async function getById(id) {
     return FishCatch.findById(id).populate('owner').lean();
 }
@@ -39,6 +43,7 @@ module.exports = {
     getAll,
     getById,
     getByUserId,
+    getLatest,
     create,
     update,
     deleteById,
