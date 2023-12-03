@@ -13,6 +13,7 @@ import Path from '../../paths';
 import styles from './Content.module.css';
 import NotFound from '../../components/NotFound/NotFound';
 import Browse from '../../components/Browse/Browse';
+import Profile from '../../components/Profile/Profile';
 
 const Content = () => {
     return (
@@ -29,6 +30,7 @@ const Content = () => {
                 </Route>
 
                 <Route element={<AuthGuard />}>
+                    <Route path={Path.Profile} element={<Profile />} />
                     <Route path={Path.CatchCreate} element={<CatchCreate />} />
                 </Route>
 

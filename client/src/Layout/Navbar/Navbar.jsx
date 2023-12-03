@@ -5,11 +5,11 @@ import AuthContext from '../../contexts/authContext';
 
 import styles from './Navbar.module.css';
 import logo from '../../assets/logo.png';
-import { UserCircleIcon, UserPlusIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import { UserCircleIcon, UserPlusIcon, UserIcon } from '@heroicons/react/24/outline';
 import Path from '../../paths';
 
 const Navbar = () => {
-    const { isAuthenticated, logoutHandler } = useContext(AuthContext);
+    const { isAuthenticated, userId } = useContext(AuthContext);
 
     return (
         <div id='navbar' className={styles['site-navbar']}>
@@ -41,9 +41,9 @@ const Navbar = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link onClick={logoutHandler}>
-                            <ArrowLeftOnRectangleIcon className='h-6 w-6'></ArrowLeftOnRectangleIcon>
-                            <span>Logout</span>
+                        <Link to={`/users/${userId}/profile`}>
+                            <UserIcon className='h-6 w-6'></UserIcon>
+                            <span>Profile</span>
                         </Link>
                     </li>
                 )}

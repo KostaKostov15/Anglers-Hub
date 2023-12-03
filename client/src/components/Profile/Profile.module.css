@@ -1,0 +1,30 @@
+.profile-nav ul {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.profile-nav li {
+    border: 1px solid #e5e5e5;
+    border-radius: 2rem;
+    transition-duration: 0.5s;
+}
+
+.profile-nav li:hover {
+    background-color: #def1ff;
+    border-color: #def1ff;
+}
+
+.profile-nav li:active {
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+}
+
+.profile-nav li a {
+    display: flex;
+    color: #065fd4;
+    padding: 0.3rem 0.8rem;
+}
+
+.profile-nav li a span {
+    padding-left: 0.3em;
+}

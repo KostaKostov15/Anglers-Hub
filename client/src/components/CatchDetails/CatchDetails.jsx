@@ -22,7 +22,7 @@ export default function CatchDetails() {
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-    const { userId } = useContext(AuthContext);
+    const { userId, isAuthenticated } = useContext(AuthContext);
     const { catchId } = useParams();
     const navigate = useNavigate();
 
@@ -56,14 +56,20 @@ export default function CatchDetails() {
 
     return (
         <>
-            <CatchEdit
-                isOpen={isEditOpen}
-                toggleModal={toggleEditModal}
-                catchId={catchId}
-                catchDetails={catchDetails}
-                updateCatchDetails={updateCatchDetails}
-            />
-            <CatchDelete isOpen={isDeleteOpen} toggleModal={toggleDeleteModal} deleteCatch={deleteCatch} />
+            {isAuthenticated ? (
+                <CatchEdit
+                    isOpen={isEditOpen}
+                    toggleModal={toggleEditModal}
+                    catchId={catchId}
+                    catchDetails={catchDetails}
+                    updateCatchDetails={updateCatchDetails}
+                />
+            ) : null}
+
+            {isAuthenticated ? (
+                <CatchDelete isOpen={isDeleteOpen} toggleModal={toggleDeleteModal} deleteCatch={deleteCatch} />
+            ) : null}
+
             <div className='bg-white'>
                 {/* Product info */}
                 <div className='mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-2 lg:pt-2'>
@@ -110,7 +116,7 @@ export default function CatchDetails() {
                         </div>
                     </div> */}
 
-                        {userId === catchDetails?.owner?._id ? (
+                        {isAuthenticated && userId === catchDetails?.owner?._id ? (
                             <>
                                 <button
                                     onClick={toggleEditModal}

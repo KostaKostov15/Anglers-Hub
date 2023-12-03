@@ -14,7 +14,7 @@ export default function Home() {
         };
 
         fetchData();
-    });
+    }, []);
 
     return (
         <div className='bg-white'>
