@@ -35,6 +35,10 @@ async function login(email, password) {
     return createToken(user);
 }
 
+async function getById(userId) {
+    return User.findById({ _id: userId });
+}
+
 async function logout(token) {
     tokenBlacklist.add(token);
 }
@@ -65,6 +69,7 @@ module.exports = {
     register,
     login,
     logout,
+    getById,
     parseToken,
 };
 

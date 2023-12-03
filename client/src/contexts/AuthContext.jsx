@@ -28,6 +28,12 @@ export const AuthProvider = ({ children }) => {
         navigate(Path.Home);
     };
 
+    const getUserById = async (userId) => {
+        const user = await authService.getById(userId);
+
+        return user;
+    };
+
     const logoutHandler = async () => {
         await authService.logout();
         setAuth('logout');
@@ -37,6 +43,7 @@ export const AuthProvider = ({ children }) => {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        getUserById,
         username: auth.username || auth.email,
         email: auth.email,
         userId: auth._id,

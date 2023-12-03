@@ -1,7 +1,7 @@
 const authController = require('express').Router();
 const { body, validationResult } = require('express-validator');
 
-const { register, login, logout } = require('../services/userService');
+const { register, login, logout, getById } = require('../services/userService');
 const { parseError } = require('../util/errorParser');
 const { isGuest, hasUser } = require('../middlewares/guards');
 
@@ -32,6 +32,17 @@ authController.post('/login', isGuest(), async (req, res) => {
     } catch (error) {
         const message = parseError(error);
         res.status(401).json({ message });
+    }
+});
+
+authController.get('/:id/profile', hasUser(), async (req, res) => {
+    try {
+        const user = await getById(req.params.id);
+
+        res.json(user);
+    } catch (error) {
+        const message = parseError(error);
+        res.status(404).json(message);
     }
 });
 

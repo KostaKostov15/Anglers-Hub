@@ -26,3 +26,9 @@ export async function logout() {
 
     return result;
 }
+
+export async function getById(userId) {
+    const result = await request.get(host + `/users/${userId}/profile`);
+
+    return result;
+}
