@@ -31,9 +31,6 @@ const CatchCreate = () => {
             case 'number':
                 value = Number(e.target.value);
                 break;
-            case 'checkbox':
-                value = e.target.checked;
-                break;
             default:
                 value = e.target.value;
                 break;

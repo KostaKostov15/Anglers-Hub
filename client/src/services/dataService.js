@@ -8,6 +8,12 @@ export async function getAll() {
     return result;
 }
 
+export async function getById(id) {
+    const result = await request.get(host + `/data/${id}`);
+
+    return result;
+}
+
 export async function getLatest() {
     const result = await request.get(host + '/data/latest');
 
@@ -26,8 +32,6 @@ export async function update(id, data) {
     return result;
 }
 
-export async function getById(id) {
-    const result = await request.get(host + `/data/${id}`);
-
-    return result;
+export async function remove(id) {
+    await request.del(host + `/data/${id}`);
 }

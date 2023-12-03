@@ -1,3 +1,5 @@
+export const host = 'http://localhost:3000';
+
 async function request(url, options) {
     try {
         const response = await fetch(url, options);
@@ -55,5 +57,3 @@ export async function put(url, data) {
 export async function del(url) {
     return await request(url, getOptions('delete'));
 }
-
-export const host = 'http://localhost:3000';

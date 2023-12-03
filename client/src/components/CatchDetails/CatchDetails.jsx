@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import CatchEdit from './CatchEdit/CatchEdit';
+import CatchDelete from './CatchDelete/CatchDelete';
 import AuthContext from '../../contexts/authContext';
-import { getById } from '../../services/dataService';
+import { getById, remove } from '../../services/dataService';
 
 import { MapPinIcon } from '@heroicons/react/24/outline';
+import Path from '../../paths';
 
 // import { StarIcon } from '@heroicons/react/20/solid';
 
@@ -18,8 +20,11 @@ import { MapPinIcon } from '@heroicons/react/24/outline';
 export default function CatchDetails() {
     const [catchDetails, setCatchDetails] = useState({});
     const [isEditOpen, setIsEditOpen] = useState(false);
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
     const { userId } = useContext(AuthContext);
     const { catchId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,13 +39,19 @@ export default function CatchDetails() {
         setIsEditOpen((oldState) => !oldState);
     };
 
+    const toggleDeleteModal = () => {
+        setIsDeleteOpen((oldState) => !oldState);
+    };
+
     const updateCatchDetails = (data) => {
         setCatchDetails(data);
     };
 
-    const deleteClickHandler = () => {
-        const result = confirm('Are you sure?');
-        console.log(result);
+    const deleteCatch = async () => {
+        await remove(catchId);
+        console.log('deleted');
+
+        navigate(Path.Browse);
     };
 
     return (
@@ -52,6 +63,7 @@ export default function CatchDetails() {
                 catchDetails={catchDetails}
                 updateCatchDetails={updateCatchDetails}
             />
+            <CatchDelete isOpen={isDeleteOpen} toggleModal={toggleDeleteModal} deleteCatch={deleteCatch} />
             <div className='bg-white'>
                 {/* Product info */}
                 <div className='mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-2 lg:pt-2'>
@@ -106,7 +118,7 @@ export default function CatchDetails() {
                                     Edit
                                 </button>
                                 <button
-                                    onClick={deleteClickHandler}
+                                    onClick={toggleDeleteModal}
                                     className='mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-2 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'>
                                     Delete
                                 </button>

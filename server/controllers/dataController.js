@@ -65,7 +65,7 @@ dataController.put('/:id', hasUser(), async (req, res) => {
 dataController.delete('/:id', hasUser(), async (req, res) => {
     const item = await getById(req.params.id);
 
-    if (req.user._id != item.owner) {
+    if (req.user._id != item.owner._id) {
         return res.status(403).json({ message: 'You cannot modify this record' });
     }
 
