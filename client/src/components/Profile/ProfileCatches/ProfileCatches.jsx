@@ -34,7 +34,7 @@ export default function ProfileCatches() {
                 </p>
             )}
 
-            {userCatches.length > 0 && (
+            {userCatches.length > 0 && !isLoading && (
                 <ul role='list' className='divide-y divide-gray-100'>
                     {userCatches.map((singleCatch) => (
                         <ProfileCatchesItem key={singleCatch._id} {...singleCatch} />
