@@ -10,6 +10,9 @@ import Path from '../../paths';
 
 const Navbar = () => {
     const { isAuthenticated, userId } = useContext(AuthContext);
+    const endpoints = {
+        profile: `/users/${userId}`,
+    };
 
     return (
         <div id='navbar' className={styles['site-navbar']}>
@@ -41,7 +44,7 @@ const Navbar = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link to={`/users/${userId}`}>
+                        <Link to={endpoints.profile}>
                             <UserIcon className='h-6 w-6'></UserIcon>
                             <span>Profile</span>
                         </Link>

@@ -6,6 +6,8 @@ import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login';
 import Register from '../../components/Register/Register';
 import Profile from '../../components/Profile/Profile';
+import ProfileData from '../../components/Profile/ProfileData/ProfileData';
+import ProfileCatches from '../../components/Profile/ProfileCatches/ProfileCatches';
 import CatchCreate from '../../components/CatchCreate/CatchCreate';
 import CatchDetails from '../../components/CatchDetails/CatchDetails';
 import Browse from '../../components/Browse/Browse';
@@ -14,7 +16,6 @@ import NotFound from '../../components/NotFound/NotFound';
 
 import Path from '../../paths';
 import styles from './Content.module.css';
-import ProfileData from '../../components/Profile/ProfileData/ProfileData';
 
 const Content = () => {
     return (
@@ -34,6 +35,7 @@ const Content = () => {
                     <Route path={Path.Profile} element={<Profile />}>
                         <Route path={Path.Profile} element={<ProfileData />} />
                         <Route path={Path.ProfileData} element={<ProfileData />} />
+                        <Route path={Path.ProfileCatches} element={<ProfileCatches />} />
                     </Route>
                     <Route path={Path.CatchCreate} element={<CatchCreate />} />
                 </Route>

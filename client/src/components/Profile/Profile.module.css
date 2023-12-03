@@ -11,7 +11,7 @@
 }
 
 .profile-nav {
-    flex: 0 1 15%;
+    flex: 0 1 18%;
 }
 
 .profile-nav ul {
@@ -24,9 +24,9 @@
 
 .profile-nav li {
     /* border: 1px solid #e5e5e5; */
-    background-color: #fcfcfc;
+    /* background-color: #fcfcfc; */
     border-radius: 0.2rem;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
     width: 100%;
 }
 
@@ -36,8 +36,13 @@
 }
 
 .profile-nav li:active {
-    background-color: #f1f1f1;
-    border-color: #f1f1f1;
+    background-color: #fafafa;
+    border-color: #fafafa;
+}
+
+.profile-nav li a.active {
+    background-color: #def1ff;
+    border-color: #def1ff;
 }
 
 .profile-nav li a {

@@ -7,6 +7,7 @@ const Path = {
     Logout: '/users/logout',
     Profile: '/users/:userId',
     ProfileData: '/users/:userId/profile',
+    ProfileCatches: '/users/:userId/catches',
 
     Browse: '/data/browse',
     CatchCreate: '/data/add-catch',
