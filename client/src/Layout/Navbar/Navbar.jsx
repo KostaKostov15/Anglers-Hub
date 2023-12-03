@@ -41,7 +41,7 @@ const Navbar = () => {
 
                 {isAuthenticated && (
                     <li>
-                        <Link to={`/users/${userId}/profile`}>
+                        <Link to={`/users/${userId}`}>
                             <UserIcon className='h-6 w-6'></UserIcon>
                             <span>Profile</span>
                         </Link>

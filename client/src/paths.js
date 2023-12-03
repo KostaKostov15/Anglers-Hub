@@ -5,7 +5,8 @@ const Path = {
     Login: '/users/login',
     Register: '/users/register',
     Logout: '/users/logout',
-    Profile: '/users/:userId/profile',
+    Profile: '/users/:userId',
+    ProfileData: '/users/:userId/profile',
 
     Browse: '/data/browse',
     CatchCreate: '/data/add-catch',

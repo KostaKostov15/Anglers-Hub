@@ -42,7 +42,7 @@ authController.get('/:id/profile', hasUser(), async (req, res) => {
         res.json(user);
     } catch (error) {
         const message = parseError(error);
-        res.status(404).json(message);
+        res.status(404).json({ message });
     }
 });
 

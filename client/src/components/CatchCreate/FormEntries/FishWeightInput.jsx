@@ -10,8 +10,8 @@ export default function FishWeightInput({ value, onChange }) {
                     value={value}
                     onChange={onChange}
                     type='number'
-                    step={0.01}
-                    min={0.01}
+                    step={1}
+                    min={0}
                     max={400}
                     name='fishWeight'
                     id='fishWeight'

@@ -53,7 +53,7 @@ const CatchCreate = () => {
 
         resetFormHandler();
 
-        navigate(Path.Home);
+        navigate(Path.Browse);
     };
 
     return (

@@ -3,6 +3,7 @@
     height: 100%;
     display: flex;
     gap: 1rem;
+    font-family: 'Raleway', sans-serif;
 }
 
 .profile-content {
@@ -10,7 +11,7 @@
 }
 
 .profile-nav {
-    flex: 0 1 10%;
+    flex: 0 1 15%;
 }
 
 .profile-nav ul {
@@ -42,8 +43,8 @@
 .profile-nav li a {
     display: flex;
     padding: 0.3rem 0.8rem;
-    justify-content: center;
-    font-family: 'Raleway', sans-serif;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .profile-nav .alert a {
@@ -54,21 +55,4 @@
 
 .profile-nav li a span {
     padding-left: 0.3em;
-}
-
-.user-data {
-    display: flex;
-    justify-content: center;
-}
-
-.user-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.user-image img {
-    width: 100%;
-    height: auto;
 }

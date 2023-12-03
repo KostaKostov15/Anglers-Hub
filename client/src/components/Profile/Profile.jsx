@@ -1,47 +1,28 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 
 import AuthContext from '../../contexts/authContext';
 
 import styles from './Profile.module.css';
-import userImg from '../../assets/user.png';
-import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftOnRectangleIcon, UserIcon, ListBulletIcon } from '@heroicons/react/24/outline';
 
 export default function Profile() {
-    const { logoutHandler, getUserById, userId } = useContext(AuthContext);
-    const [userData, setUserData] = useState({});
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const user = await getUserById(userId);
-            setUserData(user);
-        };
-
-        fetchUser();
-    }, [getUserById, userId]);
+    const { logoutHandler, userId } = useContext(AuthContext);
 
     return (
         <div className={styles['profile']}>
             <div className={styles['profile-nav']}>
                 <ul>
                     <li>
-                        <Link>
-                            <span>Collection</span>
+                        <Link to={`/users/${userId}/profile`}>
+                            <UserIcon className='h-5 w-5'></UserIcon>
+                            <span>Your Profile</span>
                         </Link>
                     </li>
                     <li>
                         <Link>
-                            <span>Collection</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link>
-                            <span>Collection</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link>
-                            <span>Collection</span>
+                            <ListBulletIcon className='h-5 w-5'></ListBulletIcon>
+                            <span>Catches</span>
                         </Link>
                     </li>
                     <li className={styles['alert']}>
@@ -53,12 +34,7 @@ export default function Profile() {
                 </ul>
             </div>
             <div className={styles['profile-content']}>
-                <div className={styles['user-data']}>
-                    <div className={styles['user-image']}>
-                        <img src={userData.imageUrl ? userData.imageUrl : userImg} alt='user-image' />
-                    </div>
-                    <div>{userData.email}</div>
-                </div>
+                <Outlet />
             </div>
         </div>
     );

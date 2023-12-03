@@ -11,7 +11,7 @@ dataController.get('/', async (req, res) => {
         res.json(data);
     } catch (err) {
         const message = parseError(err);
-        res.status(404).json(message);
+        res.status(404).json({ message });
     }
 });
 
@@ -21,7 +21,7 @@ dataController.get('/latest', async (req, res) => {
         res.json(data);
     } catch (err) {
         const message = parseError(err);
-        res.status(404).json(message);
+        res.status(404).json({ message });
     }
 });
 
@@ -42,7 +42,7 @@ dataController.get('/:id', async (req, res) => {
         res.json(data);
     } catch (err) {
         const message = parseError(err);
-        res.status(404).json(message);
+        res.status(404).json({ message });
     }
 });
 
