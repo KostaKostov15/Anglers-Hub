@@ -1,8 +1,13 @@
-import { MapPinIcon } from '@heroicons/react/24/outline';
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
-export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishWeight, fishSpecie }) {
+import { MapPinIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
+import { useContext } from 'react';
+import AuthContext from '../../../contexts/authContext';
+
+export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishWeight, fishSpecie, owner }) {
+    const { userId } = useContext(AuthContext);
+
     return (
         <Link key={_id} to={`/data/${_id}/details`} className='group border-2 rounded-lg overflow-hidden'>
             <div className='aspect-h-1 aspect-w-1 w-full  overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
@@ -13,19 +18,17 @@ export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishW
                 />
             </div>
 
-            <div className='flex justify-center items-center mt-1'>
-                <h3 className='text-sm text-gray-700 pr-1'>
+            <div className='flex justify-center items-center mt-2 gap-2'>
+                <h3 className='text-sm text-gray-700'>
                     <MapPinIcon className='h-5 w-5' />
                 </h3>
-                <p className='mt-1 text-sm font-medium text-gray-900 capitalize'>
-                    {reservoirName}
-                    {', '}
-                    {region}
-                </p>
+                <p className=' text-sm font-medium text-gray-900 capitalize'>{reservoirName}, </p>
+                <p className=' text-sm font-medium text-gray-900 capitalize'>{region}</p>
             </div>
 
-            <div className='flex justify-center items-center mb-1'>
-                <h3 className='text-sm font-semibold text-gray-600 pr-2'>{fishSpecie}</h3>
+            <div className='flex justify-center items-center mb-1 gap-4'>
+                {userId === owner ? <CheckBadgeIcon className='h-5 w-5 text-cyan-600' /> : null}
+                <h3 className='text-sm font-semibold text-gray-600 py-1'>{fishSpecie}</h3>
                 <p className='text-sm font-medium text-gray-600'>{fishWeight} kg</p>
             </div>
         </Link>

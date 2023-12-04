@@ -17,6 +17,8 @@ export default function FishSpecieSelect({ value, onChange }) {
                     <option value='Trout'>Trout</option>
                     <option value='Perch'>Perch</option>
                     <option value='Carp'>Carp</option>
+                    <option value='Catfish'>Catfish</option>
+                    <option value='Sturgeon'>Sturgeon</option>
                 </select>
             </div>
         </div>
