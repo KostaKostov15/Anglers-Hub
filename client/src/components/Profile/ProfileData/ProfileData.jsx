@@ -10,7 +10,7 @@ import Loader from '../../Loader/Loader';
 
 export default function ProfileData() {
     const [userData, setUserData] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const { getUserById, userId } = useContext(AuthContext);
 

@@ -10,6 +10,7 @@ import DetailsInput from './FormEntries/DetailsInput';
 
 import { create } from '../../services/dataService';
 import Path from '../../paths';
+import Loader from '../Loader/Loader';
 
 const formInitialState = {
     reservoirName: '',
@@ -21,8 +22,9 @@ const formInitialState = {
 };
 
 const CatchCreate = () => {
-    const navigate = useNavigate();
     const [formValues, setFormValues] = useState(formInitialState);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         let value = '';
@@ -49,11 +51,19 @@ const CatchCreate = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        await create(formValues);
+        setIsLoading(true);
+        try {
+            await create(formValues);
 
-        resetFormHandler();
+            setIsLoading(false);
 
-        navigate(Path.Browse);
+            resetFormHandler();
+
+            navigate(Path.Browse);
+        } catch (err) {
+            setIsLoading(false);
+            console.log(err);
+        }
     };
 
     return (
@@ -97,11 +107,15 @@ const CatchCreate = () => {
                     className='text-sm font-semibold leading-6 text-gray-900'>
                     Cancel
                 </button>
-                <button
-                    type='submit'
-                    className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                    Create
-                </button>
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <button
+                        type='submit'
+                        className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                        Create
+                    </button>
+                )}
             </div>
         </form>
     );

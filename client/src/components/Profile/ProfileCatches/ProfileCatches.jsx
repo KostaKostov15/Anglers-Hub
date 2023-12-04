@@ -11,7 +11,7 @@ import Loader from '../../Loader/Loader';
 
 export default function ProfileCatches() {
     const [userCatches, setUserCatches] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {

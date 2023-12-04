@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 
 export default function Browse() {
     const [catches, setCatches] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
