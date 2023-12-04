@@ -11,12 +11,14 @@ import Loader from '../../Loader/Loader';
 
 export default function ProfileCatches() {
     const [userCatches, setUserCatches] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true);
             const result = await getAllByUserId(userId);
+
             setUserCatches(result);
             setIsLoading(false);
         };
