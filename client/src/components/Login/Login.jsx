@@ -5,6 +5,7 @@ import AuthContext from '../../contexts/authContext';
 import logo from '../../assets/logo.png';
 import Path from '../../paths';
 import useForm from '../../hooks/useForm';
+import Loader from '../Loader/Loader';
 
 const defaultFormValues = {
     email: '',
@@ -12,7 +13,7 @@ const defaultFormValues = {
 };
 
 const Login = () => {
-    const { loginSubmitHandler } = useContext(AuthContext);
+    const { loginSubmitHandler, isLoading } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, defaultFormValues);
 
     return (
@@ -63,11 +64,15 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <button
-                            type='submit'
-                            className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                            Sign in
-                        </button>
+                        {isLoading ? (
+                            <Loader />
+                        ) : (
+                            <button
+                                type='submit'
+                                className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                Sign in
+                            </button>
+                        )}
                     </div>
                 </form>
 

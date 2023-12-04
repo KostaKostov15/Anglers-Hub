@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from 'react';
 
@@ -10,21 +11,18 @@ import Loader from '../../Loader/Loader';
 
 export default function ProfileData() {
     const [userData, setUserData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
 
-    const { getUserById, userId } = useContext(AuthContext);
+    const { getUserById, userId, isLoading } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchUser = async () => {
-            setIsLoading(true);
             const user = await getUserById(userId);
 
-            setIsLoading(false);
             setUserData(user);
         };
 
         fetchUser();
-    }, [getUserById, userId]);
+    }, []);
 
     return (
         <>

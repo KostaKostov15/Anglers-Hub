@@ -4,6 +4,7 @@
     border-radius: 50%;
     position: relative;
     animation: rotate 1s linear infinite;
+    text-align: center;
 }
 .loader::before {
     content: '';
@@ -11,7 +12,7 @@
     position: absolute;
     inset: 0px;
     border-radius: 50%;
-    border: 5px solid #669bbc;
+    border: 5px solid #065fd4;
     animation: prixClipFix 2s linear infinite;
 }
 
