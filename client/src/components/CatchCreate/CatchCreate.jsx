@@ -67,7 +67,7 @@ const CatchCreate = () => {
     };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className='p-4' onSubmit={submitHandler}>
             <div className='space-y-12'>
                 <div className='border-b border-gray-900/10 pb-12'>
                     <h2 className='text-base font-semibold leading-7 text-gray-900 text-xl'>Location Info</h2>

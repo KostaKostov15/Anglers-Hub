@@ -6,9 +6,10 @@ import CatchDelete from './CatchDelete/CatchDelete';
 import AuthContext from '../../contexts/authContext';
 import { getById, remove } from '../../services/dataService';
 
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, CalendarDaysIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import Path from '../../paths';
 import Loader from '../Loader/Loader';
+import dateFormatter from '../../util/dateFormatter';
 
 // import { StarIcon } from '@heroicons/react/20/solid';
 
@@ -162,6 +163,25 @@ export default function CatchDetails() {
 
                                 <div className='mt-4 space-y-6 pl-2'>
                                     <p className='text-base font-medium text-gray-600'>{catchDetails.details}</p>
+                                </div>
+                            </div>
+
+                            <div className='mt-10'>
+                                <h2 className='text-lg font-medium text-gray-900'>Creation Info</h2>
+
+                                <div className='mt-4 space-y-6 pl-2'>
+                                    <div className='flex items-center gap-4'>
+                                        <UserCircleIcon className='h-5 w-5'></UserCircleIcon>
+                                        <p className='text-base font-medium text-gray-600'>
+                                            {catchDetails.owner?.email}
+                                        </p>
+                                    </div>
+                                    <div className='flex items-center gap-4'>
+                                        <CalendarDaysIcon className='h-5 w-5'></CalendarDaysIcon>
+                                        <p className='text-base font-medium text-gray-600'>
+                                            {dateFormatter(catchDetails.createdAt)}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

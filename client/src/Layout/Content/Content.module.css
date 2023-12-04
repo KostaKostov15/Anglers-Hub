@@ -1,6 +1,6 @@
 .site-content {
     grid-column: span 12 / span 12;
-    padding: 1rem;
+    /* padding: 1rem; */
     border-left: 1px solid #ddd;
 }
 

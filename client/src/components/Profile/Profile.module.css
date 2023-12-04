@@ -3,6 +3,7 @@
     height: 100%;
     display: flex;
     gap: 1rem;
+    padding: 1rem;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -38,11 +39,13 @@
 .profile-nav li:active {
     background-color: #fafafa;
     border-color: #fafafa;
+    border-radius: 0.2rem;
 }
 
 .profile-nav li a.active {
     background-color: #def1ff;
     border-color: #def1ff;
+    border-radius: 0.2rem;
 }
 
 .profile-nav li a {
