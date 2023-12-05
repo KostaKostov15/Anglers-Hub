@@ -1,5 +1,5 @@
 <h1 align="center">
-🌐 Anglers-Hub
+Anglers-Hub
 </h1>
 
 <p align="center">
