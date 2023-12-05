@@ -36,6 +36,7 @@ function getOptions(method = 'get', body) {
 
     if (body) {
         options.headers['Content-Type'] = 'application/json';
+
         options.body = JSON.stringify(body);
     }
 

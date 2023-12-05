@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ProfileCatchesItem from './ProfileCatchesItem';
-import { getAllByUserId } from '../../../services/dataService';
-import AuthContext from '../../../contexts/authContext';
-
-import styles from './ProfileCatches.module.css';
-import { Link } from 'react-router-dom';
-import Path from '../../../paths';
 import Loader from '../../Loader/Loader';
+
+import AuthContext from '../../../contexts/authContext';
+import { getAllByUserId } from '../../../services/dataService';
+
+import Path from '../../../paths';
+import styles from './ProfileCatches.module.css';
 
 export default function ProfileCatches() {
     const [userCatches, setUserCatches] = useState([]);

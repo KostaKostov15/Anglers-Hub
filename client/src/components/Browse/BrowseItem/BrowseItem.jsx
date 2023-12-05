@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MapPinIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
-import { useContext } from 'react';
 import AuthContext from '../../../contexts/authContext';
+
+import { MapPinIcon, CheckBadgeIcon } from '@heroicons/react/24/outline';
 
 export default function BrowseItem({ _id, imageUrl, reservoirName, region, fishWeight, fishSpecie, owner }) {
     const { userId } = useContext(AuthContext);

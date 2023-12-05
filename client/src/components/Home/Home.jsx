@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { getLatest } from '../../services/dataService';
 import BrowseItem from '../Browse/BrowseItem/BrowseItem';
 import Loader from '../Loader/Loader';
-import hero from '../../assets/hero.jpg';
+
+import { getLatest } from '../../services/dataService';
+
 import Path from '../../paths';
-import { Link } from 'react-router-dom';
+import hero from '../../assets/hero.jpg';
 
 const links = [
     { name: 'Add catch', to: `${Path.CatchCreate}` },
