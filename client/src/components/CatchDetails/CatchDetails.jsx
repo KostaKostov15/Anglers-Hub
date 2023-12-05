@@ -6,21 +6,16 @@ import CatchDelete from './CatchDelete/CatchDelete';
 import AuthContext from '../../contexts/authContext';
 import { getById, remove } from '../../services/dataService';
 
-import { MapPinIcon, CalendarDaysIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, CalendarDaysIcon, UserCircleIcon, HandThumbUpIcon } from '@heroicons/react/24/outline';
 import Path from '../../paths';
 import Loader from '../Loader/Loader';
 import dateFormatter from '../../util/dateFormatter';
-
-// import { StarIcon } from '@heroicons/react/20/solid';
-
-// const reviews = { href: '#', average: 4, totalCount: 117 };
-
-// function classNames(...classes) {
-//     return classes.filter(Boolean).join(' ');
-// }
+import { addLike, getByCatchId } from '../../services/likeService';
 
 export default function CatchDetails() {
     const [catchDetails, setCatchDetails] = useState({});
+    const [catchLikes, setCatchLikes] = useState(null);
+
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -33,9 +28,11 @@ export default function CatchDetails() {
         const fetchData = async () => {
             setIsLoading(true);
             const result = await getById(catchId);
+            const likes = await getByCatchId(catchId);
 
             setIsLoading(false);
             setCatchDetails(result);
+            setCatchLikes(likes);
         };
 
         fetchData();
@@ -59,6 +56,11 @@ export default function CatchDetails() {
 
         setIsLoading(false);
         navigate(Path.Browse);
+    };
+
+    const handleLikeSubmit = async () => {
+        const like = await addLike({ catchId: catchId });
+        console.log(like);
     };
 
     return (
@@ -104,25 +106,22 @@ export default function CatchDetails() {
                                 <span className='text-base uppercase'> kg</span>
                             </p>
 
-                            {/* TODO: Reviews */}
-                            {/* <div className='mt-6'>
-                        <h3 className='sr-only'>Reviews</h3>
-                        <div className='flex items-center'>
-                            <div className='flex items-center'>
-                                {[0, 1, 2, 3, 4].map((rating) => (
-                                    <StarIcon
-                                        key={rating}
-                                        className={classNames(
-                                            reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
-                                            'h-5 w-5 flex-shrink-0'
-                                        )}
-                                        aria-hidden='true'
-                                    />
-                                ))}
-                            </div>
-                            <p className='sr-only'>{reviews.average} out of 5 stars</p>
-                        </div>
-                    </div> */}
+                            {/* Likes */}
+                            {isAuthenticated && userId != catchDetails.owner?._id && (
+                                <div className='mt-3'>
+                                    <h3 className='sr-only'>Likes</h3>
+                                    <div className='flex items-center justify-center'>
+                                        <div className='flex items-center gap-6 justify-between'>
+                                            <button onClick={handleLikeSubmit}>
+                                                <HandThumbUpIcon className='text-sky-700 h-10 w-10' />
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p className='mt-3 text-xl tracking-tight text-gray-900 text-center italic'>
+                                        Total Likes: <span className='text-sky-700'>{catchLikes ? catchLikes : 0}</span>
+                                    </p>
+                                </div>
+                            )}
 
                             {isAuthenticated && userId === catchDetails?.owner?._id ? (
                                 <>

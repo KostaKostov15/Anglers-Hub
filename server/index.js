@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const authController = require('./controllers/authController');
 const dataController = require('./controllers/dataController');
+const likeController = require('./controllers/likeController');
 const trimBody = require('./middlewares/trimBody');
 const session = require('./middlewares/session');
 
@@ -20,6 +21,7 @@ async function start() {
     const app = express();
 
     app.use(express.json());
+
     app.use(
         cors({
             origin: ['http://localhost:5173'],
@@ -34,6 +36,7 @@ async function start() {
 
     app.use('/users', authController);
     app.use('/data', dataController);
+    app.use('/like', likeController);
 
     app.listen(PORT, () => {
         console.log(`Server started on port: ${PORT}`);
