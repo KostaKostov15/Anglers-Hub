@@ -6,7 +6,7 @@ const { deleteById, createLike, getCountByCatchId, getAllByCatchIdAndOwnerId } =
 
 const { parseError } = require('../util/errorParser');
 
-likeController.get('/:id', hasUser(), async (req, res) => {
+likeController.get('/:id', async (req, res) => {
     try {
         const data = await getCountByCatchId(req.params.id);
         res.json(data);

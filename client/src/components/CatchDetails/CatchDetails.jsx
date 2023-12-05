@@ -36,17 +36,20 @@ export default function CatchDetails() {
             setIsLoading(true);
             const result = await getById(catchId);
             const likes = await getByCatchId(catchId);
-            const isLiked = await getIsCatchLiked(catchId);
+
+            if (isAuthenticated) {
+                const isLiked = await getIsCatchLiked(catchId);
+
+                isLiked.length > 0 && setIsCatchLiked(true);
+            }
 
             setCatchDetails(result);
             setCatchLikes(likes);
             setIsLoading(false);
-
-            isLiked.length > 0 && setIsCatchLiked(true);
         };
 
         fetchData();
-    }, [catchId]);
+    }, []);
 
     const toggleEditModal = () => {
         setIsEditOpen((oldState) => !oldState);
