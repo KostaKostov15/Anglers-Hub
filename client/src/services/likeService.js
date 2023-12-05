@@ -8,6 +8,12 @@ export async function getByCatchId(catchId) {
     return result;
 }
 
+export async function getIsCatchLiked(catchId) {
+    const result = await request.get(host + `/like/${catchId}/is-liked`);
+
+    return result;
+}
+
 export async function addLike(catchId) {
     const result = await request.post(host + '/like', catchId);
 

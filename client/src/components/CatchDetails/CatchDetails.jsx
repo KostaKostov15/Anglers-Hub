@@ -6,15 +6,22 @@ import CatchDelete from './CatchDelete/CatchDelete';
 import AuthContext from '../../contexts/authContext';
 import { getById, remove } from '../../services/dataService';
 
-import { MapPinIcon, CalendarDaysIcon, UserCircleIcon, HandThumbUpIcon } from '@heroicons/react/24/outline';
+import {
+    MapPinIcon,
+    CalendarDaysIcon,
+    UserCircleIcon,
+    HandThumbUpIcon,
+    HandThumbDownIcon,
+} from '@heroicons/react/24/outline';
 import Path from '../../paths';
 import Loader from '../Loader/Loader';
 import dateFormatter from '../../util/dateFormatter';
-import { addLike, getByCatchId } from '../../services/likeService';
+import { addLike, getByCatchId, getIsCatchLiked, removeLike } from '../../services/likeService';
 
 export default function CatchDetails() {
     const [catchDetails, setCatchDetails] = useState({});
-    const [catchLikes, setCatchLikes] = useState(null);
+    const [catchLikes, setCatchLikes] = useState(0);
+    const [isCatchLiked, setIsCatchLiked] = useState(false);
 
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -29,10 +36,13 @@ export default function CatchDetails() {
             setIsLoading(true);
             const result = await getById(catchId);
             const likes = await getByCatchId(catchId);
+            const isLiked = await getIsCatchLiked(catchId);
 
-            setIsLoading(false);
             setCatchDetails(result);
             setCatchLikes(likes);
+            setIsLoading(false);
+
+            isLiked.length > 0 && setIsCatchLiked(true);
         };
 
         fetchData();
@@ -59,8 +69,37 @@ export default function CatchDetails() {
     };
 
     const handleLikeSubmit = async () => {
-        const like = await addLike({ catchId: catchId });
-        console.log(like);
+        setIsLoading(true);
+
+        try {
+            await addLike({ catchId: catchId });
+
+            setIsLoading(false);
+            setIsCatchLiked(true);
+            setCatchLikes((oldValue) => {
+                return (oldValue += 1);
+            });
+        } catch (err) {
+            console.log(err.message);
+            setIsLoading(false);
+        }
+    };
+
+    const handleDislikeSubmit = async () => {
+        setIsLoading(true);
+
+        try {
+            await removeLike(catchId);
+
+            setIsLoading(false);
+            setIsCatchLiked(false);
+            setCatchLikes((oldValue) => {
+                return (oldValue -= 1);
+            });
+        } catch (err) {
+            console.log(err.message);
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -112,16 +151,22 @@ export default function CatchDetails() {
                                     <h3 className='sr-only'>Likes</h3>
                                     <div className='flex items-center justify-center'>
                                         <div className='flex items-center gap-6 justify-between'>
-                                            <button onClick={handleLikeSubmit}>
-                                                <HandThumbUpIcon className='text-sky-700 h-10 w-10' />
-                                            </button>
+                                            {isCatchLiked ? (
+                                                <button onClick={handleDislikeSubmit}>
+                                                    <HandThumbDownIcon className='text-red-500 h-10 w-10' />
+                                                </button>
+                                            ) : (
+                                                <button onClick={handleLikeSubmit}>
+                                                    <HandThumbUpIcon className='text-sky-700 h-10 w-10' />
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
-                                    <p className='mt-3 text-xl tracking-tight text-gray-900 text-center italic'>
-                                        Total Likes: <span className='text-sky-700'>{catchLikes ? catchLikes : 0}</span>
-                                    </p>
                                 </div>
                             )}
+                            <p className='mt-3 text-xl tracking-tight text-gray-900 text-center italic'>
+                                Total Likes: <span className='ml-2 text-sky-700 text-3xl'>{catchLikes}</span>
+                            </p>
 
                             {isAuthenticated && userId === catchDetails?.owner?._id ? (
                                 <>
