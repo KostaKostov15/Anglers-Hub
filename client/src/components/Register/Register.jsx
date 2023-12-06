@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import useForm from '../../hooks/useForm';
+import useCustomForm from '../../hooks/useCustomForm';
 import AuthContext from '../../contexts/authContext';
 import Path from '../../paths';
 
@@ -18,7 +18,7 @@ const defaultFormValues = {
 const Register = () => {
     const { registerSubmitHandler, isLoading } = useContext(AuthContext);
 
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, defaultFormValues);
+    const { values, onChange, onSubmit } = useCustomForm(registerSubmitHandler, defaultFormValues);
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>

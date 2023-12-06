@@ -6,6 +6,10 @@ const secret = process.env.JWT_SECRET;
 const tokenBlacklist = new Set();
 
 async function register(email, username, password) {
+    if (password.length < 6) {
+        throw new Error('Password should be at least 6 characters');
+    }
+
     const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
 
     if (existing) {
