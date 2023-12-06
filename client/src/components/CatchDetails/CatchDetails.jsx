@@ -27,6 +27,7 @@ export default function CatchDetails() {
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLikeLoading, setIsLikeLoading] = useState(false);
 
     const { userId, isAuthenticated } = useContext(AuthContext);
     const { catchId } = useParams();
@@ -73,36 +74,36 @@ export default function CatchDetails() {
     };
 
     const handleLikeSubmit = async () => {
-        setIsLoading(true);
+        setIsLikeLoading(true);
 
         try {
             await addLike({ catchId: catchId });
 
-            setIsLoading(false);
+            setIsLikeLoading(false);
             setIsCatchLiked(true);
             setCatchLikes((oldValue) => {
                 return (oldValue += 1);
             });
         } catch (err) {
             console.log(err.message);
-            setIsLoading(false);
+            setIsLikeLoading(false);
         }
     };
 
     const handleDislikeSubmit = async () => {
-        setIsLoading(true);
+        setIsLikeLoading(true);
 
         try {
             await removeLike(catchId);
 
-            setIsLoading(false);
+            setIsLikeLoading(false);
             setIsCatchLiked(false);
             setCatchLikes((oldValue) => {
                 return (oldValue -= 1);
             });
         } catch (err) {
             console.log(err.message);
-            setIsLoading(false);
+            setIsLikeLoading(false);
         }
     };
 
@@ -155,14 +156,20 @@ export default function CatchDetails() {
                                     <h3 className='sr-only'>Likes</h3>
                                     <div className='flex items-center justify-center'>
                                         <div className='flex items-center gap-6 justify-between'>
-                                            {isCatchLiked ? (
-                                                <button onClick={handleDislikeSubmit}>
-                                                    <HandThumbDownIcon className='text-red-500 h-10 w-10' />
-                                                </button>
+                                            {isLikeLoading ? (
+                                                <Loader />
                                             ) : (
-                                                <button onClick={handleLikeSubmit}>
-                                                    <HandThumbUpIcon className='text-sky-700 h-10 w-10' />
-                                                </button>
+                                                <>
+                                                    {isCatchLiked ? (
+                                                        <button onClick={handleDislikeSubmit}>
+                                                            <HandThumbDownIcon className='text-red-500 h-10 w-10' />
+                                                        </button>
+                                                    ) : (
+                                                        <button onClick={handleLikeSubmit}>
+                                                            <HandThumbUpIcon className='text-sky-700 h-10 w-10' />
+                                                        </button>
+                                                    )}
+                                                </>
                                             )}
                                         </div>
                                     </div>
