@@ -4,6 +4,7 @@
     grid-template-rows: auto auto 1fr auto;
     width: 100%;
     min-height: 100vh;
+    font-family: 'Raleway', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media (min-width: 768px) {

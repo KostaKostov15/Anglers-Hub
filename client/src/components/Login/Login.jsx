@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import AuthContext from '../../contexts/authContext';
 import Loader from '../Loader/Loader';
 import Input from '../Input/Input';
-import { email_validation, password_validation } from '../../util/inputValidations';
+import { email_validation, password_validation } from '../../util/formValidations';
 
 import Path from '../../paths';
 import logo from '../../assets/logo.png';
@@ -50,7 +50,7 @@ const Login = () => {
                     </form>
                 </FormProvider>
 
-                <p className='mt-9 text-center text-sm text-gray-500'>
+                <p className='mt-6 text-center text-sm text-gray-500'>
                     Not a member?{' '}
                     <Link to={Path.Register} className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'>
                         Sign Up

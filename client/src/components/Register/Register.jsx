@@ -13,7 +13,7 @@ import {
     password_validation,
     rePassword_validation,
     username_validation,
-} from '../../util/inputValidations';
+} from '../../util/formValidations';
 
 const Register = () => {
     const { registerSubmitHandler, isLoading } = useContext(AuthContext);
@@ -30,12 +30,12 @@ const Register = () => {
         <div className='flex min-h-full flex-1 flex-col justify-center'>
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
                 <img className='mx-auto h-12 w-auto' src={logo} alt='Site Logo' />
-                <h2 className='mt-9 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
+                <h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>
                     Sign Up Now
                 </h2>
             </div>
 
-            <div className='mt-9 sm:mx-auto sm:w-full sm:max-w-sm'>
+            <div className='mt-6 sm:mx-auto sm:w-full sm:max-w-sm'>
                 <FormProvider {...methods}>
                     <form onSubmit={(e) => e.preventDefault} noValidate autoComplete='off' className='space-y-6'>
                         <Input {...email_validation} />

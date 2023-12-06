@@ -1,4 +1,4 @@
-export const findInputError = (errors, name) => {
+export const findFormError = (errors, name) => {
     const filtered = Object.keys(errors)
         .filter((key) => key.includes(name))
         .reduce((cur, key) => {
