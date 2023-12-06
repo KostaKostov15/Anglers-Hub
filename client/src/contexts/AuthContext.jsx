@@ -15,38 +15,61 @@ export const AuthProvider = ({ children }) => {
 
     const loginSubmitHandler = async (email, password) => {
         setIsLoading(true);
-        const result = await authService.login(email, password);
+        try {
+            const result = await authService.login(email, password);
 
-        setIsLoading(false);
-        setAuth(result);
+            setIsLoading(false);
+            setAuth(result);
 
-        navigate(Path.Home);
+            navigate(Path.Home);
+        } catch (err) {
+            console.log(err.message);
+            setIsLoading(false);
+        }
     };
 
-    const registerSubmitHandler = async (values) => {
+    const registerSubmitHandler = async (email, username, password) => {
         setIsLoading(true);
-        const result = await authService.register(values.email, values.username, values.password);
 
-        setIsLoading(false);
-        setAuth(result);
+        try {
+            const result = await authService.register(email, username, password);
 
-        navigate(Path.Home);
+            setIsLoading(false);
+            setAuth(result);
+
+            navigate(Path.Home);
+        } catch (err) {
+            console.log(err.message);
+            setIsLoading(false);
+        }
     };
 
     const getUserById = async (userId) => {
         setIsLoading(true);
-        const user = await authService.getById(userId);
 
-        setIsLoading(false);
-        return user;
+        try {
+            const user = await authService.getById(userId);
+
+            setIsLoading(false);
+            return user;
+        } catch (err) {
+            console.log(err);
+            setIsLoading(false);
+        }
     };
 
     const logoutHandler = async () => {
         setIsLoading(true);
-        await authService.logout();
 
-        setIsLoading(false);
-        setAuth('logout');
+        try {
+            await authService.logout();
+
+            setIsLoading(false);
+            setAuth('logout');
+        } catch (err) {
+            console.log(err.message);
+            setIsLoading(false);
+        }
     };
 
     const values = {

@@ -24,8 +24,6 @@ async function createLike(data) {
 async function deleteById(ownerId, catchId) {
     const existing = await getAllByCatchIdAndOwnerId(ownerId, catchId);
 
-    console.log(existing);
-
     if (existing.length == 0) {
         throw new Error('You cannot remove a non-existent like');
     }

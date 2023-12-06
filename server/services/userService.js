@@ -20,6 +20,7 @@ async function register(email, username, password) {
         email,
         username,
         hashedPassword: await bcrypt.hash(password, 10),
+        imageUrl: '',
     });
 
     return createToken(user);

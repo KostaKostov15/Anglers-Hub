@@ -12,7 +12,6 @@ import logo from '../../assets/logo.png';
 
 const Login = () => {
     const { loginSubmitHandler, isLoading } = useContext(AuthContext);
-
     const methods = useForm();
 
     const onFormSubmit = methods.handleSubmit((data) => {
