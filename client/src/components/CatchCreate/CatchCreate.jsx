@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { create } from '../../services/dataService';
-import Input from '../Input/Input';
+import Input from '../Form/Input';
+import Select from '../Form/Select';
 import Loader from '../Loader/Loader';
 
+import Path from '../../paths';
 import {
     details_validation,
     fishSpecie_validation,
@@ -14,8 +16,6 @@ import {
     region_validation,
     reservoirName_validation,
 } from '../../util/formValidations';
-import Path from '../../paths';
-import Select from '../Input/Select';
 
 const CatchCreate = () => {
     const [isLoading, setIsLoading] = useState(false);

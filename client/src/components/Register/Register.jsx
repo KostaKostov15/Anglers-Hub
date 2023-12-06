@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import AuthContext from '../../contexts/authContext';
+import Input from '../Form/Input';
 import Loader from '../Loader/Loader';
 
 import Path from '../../paths';
 import logo from '../../assets/logo.png';
-import Input from '../Input/Input';
 import {
     email_validation,
     password_validation,

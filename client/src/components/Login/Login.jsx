@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import AuthContext from '../../contexts/authContext';
+import Input from '../Form/Input';
 import Loader from '../Loader/Loader';
-import Input from '../Input/Input';
-import { email_validation, password_validation } from '../../util/formValidations';
 
 import Path from '../../paths';
 import logo from '../../assets/logo.png';
+import { email_validation, password_validation } from '../../util/formValidations';
 
 const Login = () => {
     const { loginSubmitHandler, isLoading } = useContext(AuthContext);
