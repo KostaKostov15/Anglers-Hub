@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { findFormError } from '../../util/findFormError';
 import { isFormInvalid } from '../../util/isFormInvalid';
 
-export default function Input({ id, label, type, placeholder, validation, name, multiline, className }) {
+export default function Input({ id, label, type, placeholder, validation, name, multiline, className, defaultValue }) {
     const {
         register,
         watch,
@@ -46,6 +46,7 @@ export default function Input({ id, label, type, placeholder, validation, name, 
                         type={type}
                         className={input_tailwind}
                         placeholder={placeholder}
+                        defaultValue={defaultValue}
                         {...register(name, validation)}></textarea>
                 ) : (
                     <input
@@ -53,6 +54,7 @@ export default function Input({ id, label, type, placeholder, validation, name, 
                         type={type}
                         className={input_tailwind}
                         placeholder={placeholder}
+                        defaultValue={defaultValue}
                         {...register(name, name == 'rePassword' ? rePasswordValidation : validation)}
                     />
                 )}
