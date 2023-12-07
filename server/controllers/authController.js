@@ -1,7 +1,7 @@
 const authController = require('express').Router();
 const { body, validationResult } = require('express-validator');
 
-const { register, login, logout, getById, update } = require('../services/userService');
+const { register, login, logout, getById } = require('../services/userService');
 const { parseError } = require('../util/errorParser');
 const { isGuest, hasUser } = require('../middlewares/guards');
 
