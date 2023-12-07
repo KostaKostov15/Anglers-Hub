@@ -9,9 +9,10 @@ import Loader from '../Loader/Loader';
 import Path from '../../paths';
 import logo from '../../assets/logo.png';
 import { email_validation, password_validation } from '../../util/formValidations';
+import Alert from '../Alert/Alert';
 
 const Login = () => {
-    const { loginSubmitHandler, isLoading } = useContext(AuthContext);
+    const { loginSubmitHandler, isLoading, errorMsg } = useContext(AuthContext);
     const methods = useForm();
 
     const onFormSubmit = methods.handleSubmit((data) => {
@@ -22,6 +23,8 @@ const Login = () => {
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
+            {errorMsg ? <Alert errorMessage={errorMsg} /> : null}
+
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
                 <img className='mx-auto h-12 w-auto' src={logo} alt='Site Logo' />
                 <h2 className='mt-9 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>

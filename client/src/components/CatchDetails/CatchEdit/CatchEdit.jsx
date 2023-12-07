@@ -84,32 +84,27 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
                                                     autoComplete='off'
                                                     className='space-y-6'>
                                                     {/* reservoirName */}
-
                                                     <Input
                                                         {...reservoirName_validation}
                                                         defaultValue={formValues.reservoirName}
                                                     />
 
                                                     {/* region */}
-
                                                     <Input {...region_validation} defaultValue={formValues.region} />
 
                                                     {/* fishWeight */}
-
                                                     <Input
                                                         {...fishWeight_validation}
                                                         defaultValue={formValues.fishWeight}
                                                     />
 
                                                     {/* imageUrl */}
-
                                                     <Input
                                                         {...imageUrl_validation}
                                                         defaultValue={formValues.imageUrl}
                                                     />
 
                                                     {/* details */}
-
                                                     <Input {...details_validation} defaultValue={formValues.details} />
 
                                                     <div>

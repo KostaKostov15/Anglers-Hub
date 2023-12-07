@@ -14,9 +14,10 @@ import {
     rePassword_validation,
     username_validation,
 } from '../../util/formValidations';
+import Alert from '../Alert/Alert';
 
 const Register = () => {
-    const { registerSubmitHandler, isLoading } = useContext(AuthContext);
+    const { registerSubmitHandler, isLoading, errorMsg } = useContext(AuthContext);
 
     const methods = useForm();
 
@@ -28,6 +29,8 @@ const Register = () => {
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
+            {errorMsg ? <Alert errorMessage={errorMsg} /> : null}
+
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
                 <img className='mx-auto h-12 w-auto' src={logo} alt='Site Logo' />
                 <h2 className='mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900'>

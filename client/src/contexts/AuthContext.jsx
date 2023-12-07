@@ -10,6 +10,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState(null);
     const [auth, setAuth] = usePersistedState('auth', {});
     const navigate = useNavigate();
 
@@ -24,6 +25,8 @@ export const AuthProvider = ({ children }) => {
             navigate(Path.Home);
         } catch (err) {
             console.log(err.message);
+
+            setErrorMsg(err.message);
             setIsLoading(false);
         }
     };
@@ -40,6 +43,8 @@ export const AuthProvider = ({ children }) => {
             navigate(Path.Home);
         } catch (err) {
             console.log(err.message);
+
+            setErrorMsg(err.message);
             setIsLoading(false);
         }
     };
@@ -68,6 +73,7 @@ export const AuthProvider = ({ children }) => {
             setAuth('logout');
         } catch (err) {
             console.log(err.message);
+
             setIsLoading(false);
         }
     };
@@ -77,6 +83,7 @@ export const AuthProvider = ({ children }) => {
         registerSubmitHandler,
         logoutHandler,
         getUserById,
+        errorMsg,
         isLoading,
         username: auth.username || auth.email,
         email: auth.email,
