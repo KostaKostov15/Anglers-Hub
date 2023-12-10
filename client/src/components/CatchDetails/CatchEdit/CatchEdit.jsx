@@ -9,11 +9,13 @@ import Loader from '../../Loader/Loader';
 import Input from '../../Form/Input';
 import {
     details_validation,
+    fishSpecie_validation,
     fishWeight_validation,
     imageUrl_validation,
     region_validation,
     reservoirName_validation,
 } from '../../../util/formValidations';
+import Select from '../../Form/Select';
 
 export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, updateCatchDetails }) {
     const [formValues, setFormValues] = useState({});
@@ -28,6 +30,7 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
 
     const onFormSubmit = methods.handleSubmit(async (data) => {
         setIsLoading(true);
+        console.log(data);
 
         try {
             const result = await update(catchId, data);
@@ -97,6 +100,9 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
                                                         {...fishWeight_validation}
                                                         defaultValue={formValues.fishWeight}
                                                     />
+
+                                                    {/* fishSPecie */}
+                                                    <Select {...fishSpecie_validation} />
 
                                                     {/* imageUrl */}
                                                     <Input
