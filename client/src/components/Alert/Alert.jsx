@@ -1,12 +1,20 @@
 /* eslint-disable react/prop-types */
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useContext, useRef, useState } from 'react';
+import AuthContext from '../../contexts/authContext';
+
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
-export default function Alert({ errorMessage }) {
+export default function Alert() {
     const [open, setOpen] = useState(true);
+    const { errorMsg, clearErrors } = useContext(AuthContext);
 
     const cancelButtonRef = useRef(null);
+
+    const closeModalClearErrors = () => {
+        setOpen(false);
+        clearErrors();
+    };
 
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -48,7 +56,7 @@ export default function Alert({ errorMessage }) {
                                                 Oops, something went wrong!
                                             </Dialog.Title>
                                             <div className='mt-2'>
-                                                <p className='text-sm text-gray-500'>{errorMessage}</p>
+                                                <p className='text-sm text-gray-500'>{errorMsg}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +65,7 @@ export default function Alert({ errorMessage }) {
                                     <button
                                         type='button'
                                         className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
-                                        onClick={() => setOpen(false)}
+                                        onClick={closeModalClearErrors}
                                         ref={cancelButtonRef}>
                                         Close
                                     </button>

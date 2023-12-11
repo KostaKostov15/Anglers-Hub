@@ -102,7 +102,10 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
                                                     />
 
                                                     {/* fishSPecie */}
-                                                    <Select {...fishSpecie_validation} />
+                                                    <Select
+                                                        {...fishSpecie_validation}
+                                                        defaultValue={formValues.fishSpecie}
+                                                    />
 
                                                     {/* imageUrl */}
                                                     <Input

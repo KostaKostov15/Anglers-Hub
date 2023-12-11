@@ -78,11 +78,16 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const clearErrors = () => {
+        setErrorMsg(null);
+    };
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
         getUserById,
+        clearErrors,
         errorMsg,
         isLoading,
         username: auth.username || auth.email,

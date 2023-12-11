@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { findFormError } from '../../util/findFormError';
 import { isFormInvalid } from '../../util/isFormInvalid';
 
-export default function Select({ id, label, type, validation, name, className, options }) {
+export default function Select({ id, label, type, validation, name, className, options, defaultValue }) {
     const {
         register,
         formState: { errors },
@@ -26,7 +26,12 @@ export default function Select({ id, label, type, validation, name, className, o
             </div>
 
             <div className='mt-2'>
-                <select id={id} type={type} className={input_tailwind} {...register(name, validation)}>
+                <select
+                    id={id}
+                    type={type}
+                    className={input_tailwind}
+                    defaultValue={defaultValue}
+                    {...register(name, validation)}>
                     {options.map((option) => (
                         <option key={option.value} value={option.value}>
                             {option.value}

@@ -1,7 +1,7 @@
 const FishCatch = require('../models/FishCatch');
 
 async function getAll() {
-    return FishCatch.find({});
+    return FishCatch.find({}).sort({ createdAt: -1 });
 }
 
 async function getLatest() {
@@ -13,7 +13,7 @@ async function getById(id) {
 }
 
 async function getAllByUserId(userId) {
-    return FishCatch.find({ owner: userId }).populate('owner');
+    return FishCatch.find({ owner: userId }).populate('owner').sort({ createdAt: -1 });
 }
 
 async function create(data) {

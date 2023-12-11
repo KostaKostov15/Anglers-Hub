@@ -23,7 +23,7 @@ const Login = () => {
 
     return (
         <div className='flex min-h-full flex-1 flex-col justify-center'>
-            {errorMsg ? <Alert errorMessage={errorMsg} /> : null}
+            {errorMsg ? <Alert /> : null}
 
             <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
                 <img className='mx-auto h-12 w-auto' src={logo} alt='Site Logo' />
