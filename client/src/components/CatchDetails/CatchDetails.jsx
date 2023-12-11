@@ -122,7 +122,7 @@ export default function CatchDetails() {
                 <CatchDelete isOpen={isDeleteOpen} toggleModal={toggleDeleteModal} deleteCatch={deleteCatch} />
             ) : null}
             <div className='bg-white'>
-                {/* Product info */}
+                {/* Catch info */}
                 {isLoading ? (
                     <Loader />
                 ) : (
@@ -132,9 +132,20 @@ export default function CatchDetails() {
                                 {catchDetails?.owner?.username}
                                 {"'s Catch"}
                             </h1>
+
+                            <div className='flex justify-start items-center mt-1'>
+                                <h3 className='text-sm text-sky-700 pr-1'>
+                                    <MapPinIcon className='h-5 w-5' />
+                                </h3>
+                                <p className='text-base font-medium text-sky-700 capitalize'>
+                                    {catchDetails.reservoirName}
+                                    {', '}
+                                    {catchDetails.region}
+                                </p>
+                            </div>
                         </div>
 
-                        {/* Options */}
+                        {/* Catch information */}
                         <div className='mt-4 lg:row-span-3 lg:mt-0'>
                             <div className='aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg'>
                                 <img
@@ -144,9 +155,11 @@ export default function CatchDetails() {
                                 />
                             </div>
 
-                            <h2 className='sr-only'>Product information</h2>
-                            <p className='text-3xl tracking-tight text-gray-900 mt-5 text-center italic'>
-                                {catchDetails.fishSpecie} {catchDetails.fishWeight}
+                            {/* Fish weight */}
+                            <h2 className='sr-only'>Catch information</h2>
+                            <p className='text-3xl tracking-tight text-gray-900 mt-5 text-center'>
+                                {catchDetails.fishSpecie}
+                                <span className='ml-2 text-sky-700'>{catchDetails.fishWeight}</span>
                                 <span className='text-base uppercase'> kg</span>
                             </p>
 
@@ -175,10 +188,11 @@ export default function CatchDetails() {
                                     </div>
                                 </div>
                             )}
-                            <p className='mt-3 text-xl tracking-tight text-gray-900 text-center italic'>
+                            <p className='mt-3 text-xl tracking-tight text-gray-900 text-center'>
                                 Total Likes: <span className='ml-2 text-sky-700 text-3xl'>{catchLikes}</span>
                             </p>
 
+                            {/* Actions - edit, delete */}
                             {isAuthenticated && userId === catchDetails?.owner?._id ? (
                                 <>
                                     <button
@@ -196,33 +210,40 @@ export default function CatchDetails() {
                         </div>
 
                         <div className='py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6'>
-                            {/* Description and details */}
-
-                            <div className='mt-5'>
-                                <h2 className='text-lg font-medium text-gray-900'>Location</h2>
+                            {/* Weather */}
+                            <div className='mt-6'>
+                                <h2 className='text-lg font-semibold text-gray-900'>Weather</h2>
 
                                 <div className='flex justify-start items-center mt-4 pl-2'>
-                                    <h3 className='text-sm text-gray-700 pr-1'>
-                                        <MapPinIcon className='h-5 w-5' />
-                                    </h3>
                                     <p className='text-base font-medium text-gray-600 capitalize'>
-                                        {catchDetails.reservoirName}
-                                        {', '}
-                                        {catchDetails.region}
+                                        {catchDetails.weather}
                                     </p>
                                 </div>
                             </div>
 
-                            <div className='mt-10'>
-                                <h2 className='text-lg font-medium text-gray-900'>Details</h2>
+                            {/* Fish bait */}
+                            <div className='mt-6'>
+                                <h2 className='text-lg font-semibold text-gray-900'>Bait</h2>
+
+                                <div className='flex justify-start items-center mt-4 pl-2'>
+                                    <p className='text-base font-medium text-gray-600 capitalize'>
+                                        {catchDetails.fishBait}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Details */}
+                            <div className='mt-6'>
+                                <h2 className='text-lg font-semibold text-gray-900'>Details</h2>
 
                                 <div className='mt-4 space-y-6 pl-2'>
                                     <p className='text-base font-medium text-gray-600'>{catchDetails.details}</p>
                                 </div>
                             </div>
 
-                            <div className='mt-10'>
-                                <h2 className='text-lg font-medium text-gray-900'>Creation Info</h2>
+                            {/* Creation info */}
+                            <div className='mt-6'>
+                                <h2 className='text-lg font-semibold text-gray-900'>Creation Info</h2>
 
                                 <div className='mt-4 space-y-6 pl-2'>
                                     <div className='flex items-center gap-4'>
