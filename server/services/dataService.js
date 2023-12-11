@@ -25,8 +25,11 @@ async function update(id, data) {
 
     existing.reservoirName = data.reservoirName;
     existing.region = data.region;
+    existing.hoursFished = data.hoursFished;
+    existing.weather = data.weather;
     existing.fishSpecie = data.fishSpecie;
     existing.fishWeight = data.fishWeight;
+    existing.fishBait = data.fishBait;
     existing.imageUrl = data.imageUrl;
     existing.details = data.details;
 

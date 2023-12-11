@@ -9,11 +9,14 @@ import Loader from '../../Loader/Loader';
 import Input from '../../Form/Input';
 import {
     details_validation,
+    fishBait_validation,
     fishSpecie_validation,
     fishWeight_validation,
+    hoursFished_validation,
     imageUrl_validation,
     region_validation,
     reservoirName_validation,
+    weather_validation,
 } from '../../../util/formValidations';
 import Select from '../../Form/Select';
 
@@ -24,13 +27,23 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
     const methods = useForm();
 
     useEffect(() => {
-        const { reservoirName, region, fishSpecie, fishWeight, imageUrl, details } = catchDetails;
-        setFormValues({ reservoirName, region, fishSpecie, fishWeight, imageUrl, details });
+        const { reservoirName, region, hoursFished, weather, fishSpecie, fishWeight, fishBait, imageUrl, details } =
+            catchDetails;
+        setFormValues({
+            reservoirName,
+            region,
+            hoursFished,
+            weather,
+            fishSpecie,
+            fishWeight,
+            fishBait,
+            imageUrl,
+            details,
+        });
     }, [catchDetails]);
 
     const onFormSubmit = methods.handleSubmit(async (data) => {
         setIsLoading(true);
-        console.log(data);
 
         try {
             const result = await update(catchId, data);
@@ -95,16 +108,31 @@ export default function CatchEdit({ isOpen, toggleModal, catchId, catchDetails, 
                                                     {/* region */}
                                                     <Input {...region_validation} defaultValue={formValues.region} />
 
+                                                    {/* hoursFished */}
+                                                    <Input
+                                                        {...hoursFished_validation}
+                                                        defaultValue={formValues.hoursFished}
+                                                    />
+
+                                                    {/* weather */}
+                                                    <Select {...weather_validation} defaultValue={formValues.weather} />
+
+                                                    {/* fishSpecie */}
+                                                    <Select
+                                                        {...fishSpecie_validation}
+                                                        defaultValue={formValues.fishSpecie}
+                                                    />
+
                                                     {/* fishWeight */}
                                                     <Input
                                                         {...fishWeight_validation}
                                                         defaultValue={formValues.fishWeight}
                                                     />
 
-                                                    {/* fishSPecie */}
-                                                    <Select
-                                                        {...fishSpecie_validation}
-                                                        defaultValue={formValues.fishSpecie}
+                                                    {/* fishBait */}
+                                                    <Input
+                                                        {...fishBait_validation}
+                                                        defaultValue={formValues.fishBait}
                                                     />
 
                                                     {/* imageUrl */}

@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 
+// User Validations
 export const email_validation = {
     id: 'email',
     name: 'email',
@@ -71,6 +72,7 @@ export const username_validation = {
     },
 };
 
+// Catch Validations
 export const reservoirName_validation = {
     id: 'reservoirName',
     name: 'reservoirName',
@@ -105,6 +107,55 @@ export const region_validation = {
     },
 };
 
+export const hoursFished_validation = {
+    id: 'hoursFished',
+    name: 'hoursFished',
+    type: 'number',
+    label: 'Hours Fished *',
+    placeholder: '4',
+    multiline: false,
+    validation: {
+        required: {
+            value: true,
+            message: 'Fishing hours are required',
+        },
+        min: {
+            value: 1,
+            message: 'Fishing hours must be between 1 and 72',
+        },
+        max: {
+            value: 72,
+            message: 'Fish weight must be between 1 and 72',
+        },
+    },
+};
+
+export const weather_validation = {
+    id: 'weather',
+    name: 'weather',
+    label: 'Weather *',
+    multiline: false,
+    options: [
+        { value: '---' },
+        { value: `Sunny` },
+        { value: 'Cloudy' },
+        { value: 'Windy' },
+        { value: 'Rainy' },
+        { value: 'Snowy' },
+    ],
+
+    validation: {
+        required: {
+            value: true,
+            message: 'Weather is required',
+        },
+        pattern: {
+            value: /\w+/g,
+            message: 'Please select weather type',
+        },
+    },
+};
+
 export const fishSpecie_validation = {
     id: 'fishSpecie',
     name: 'fishSpecie',
@@ -117,6 +168,8 @@ export const fishSpecie_validation = {
         { value: 'Perch' },
         { value: 'Carp' },
         { value: 'Catfish' },
+        { value: 'Zander' },
+        { value: 'Chub' },
         { value: 'Sturgeon' },
     ],
 
@@ -155,6 +208,21 @@ export const fishWeight_validation = {
     },
 };
 
+export const fishBait_validation = {
+    id: 'fishBait',
+    name: 'fishBait',
+    type: 'text',
+    label: 'Fish Bait *',
+    placeholder: 'Worms',
+    multiline: false,
+    validation: {
+        required: {
+            value: true,
+            message: 'Fish bait is required',
+        },
+    },
+};
+
 export const imageUrl_validation = {
     id: 'imageUrl',
     name: 'imageUrl',
@@ -177,5 +245,10 @@ export const details_validation = {
     label: 'Details',
     placeholder: 'Write a few sentences about the catch, baits or the fishing gear used',
     multiline: true,
-    validation: {},
+    validation: {
+        maxLength: {
+            value: 500,
+            message: 'Details should not exceed 500 characters',
+        },
+    },
 };

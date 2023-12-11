@@ -10,11 +10,14 @@ import Loader from '../Loader/Loader';
 import Path from '../../paths';
 import {
     details_validation,
+    fishBait_validation,
     fishSpecie_validation,
     fishWeight_validation,
+    hoursFished_validation,
     imageUrl_validation,
     region_validation,
     reservoirName_validation,
+    weather_validation,
 } from '../../util/formValidations';
 
 const CatchCreate = () => {
@@ -55,6 +58,11 @@ const CatchCreate = () => {
 
                             <Input {...region_validation} className='sm:col-span-2' />
                         </div>
+                        <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-4'>
+                            <Input {...hoursFished_validation} className={'sm:col-span-2 sm:col-start-1'} />
+
+                            <Select {...weather_validation} className='sm:col-span-2' />
+                        </div>
                     </div>
 
                     <div className='border-b border-gray-900/10 pb-12'>
@@ -69,6 +77,8 @@ const CatchCreate = () => {
 
                                 <Input {...fishWeight_validation} className='sm:col-span-3' />
                             </div>
+
+                            <Input {...fishBait_validation} className='col-span-full' />
 
                             <Input {...imageUrl_validation} className='col-span-full' />
 

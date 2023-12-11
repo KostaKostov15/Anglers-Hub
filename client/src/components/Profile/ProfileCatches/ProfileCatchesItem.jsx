@@ -7,7 +7,11 @@ export default function ProfileCatchesItem({ _id, imageUrl, fishSpecie, fishWeig
         <Link to={`/data/${_id}/details`}>
             <li className='flex justify-between gap-x-6 py-5'>
                 <div className='flex min-w-0 gap-x-4 items-center'>
-                    <img className='h-16 w-16 flex-none rounded-full bg-gray-50' src={imageUrl} alt='' />
+                    <img
+                        className='h-16 w-16 flex-none rounded-full bg-gray-50'
+                        src={imageUrl}
+                        alt='User catch image'
+                    />
                     <div className='min-w-0 flex-auto'>
                         <p className='text-base font-semibold leading-6 text-gray-900'>{fishSpecie}</p>
                         <p className='mt-1 truncate text-base leading-5 text-gray-500'>{fishWeight} kg</p>

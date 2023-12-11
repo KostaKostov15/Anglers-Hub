@@ -8,6 +8,16 @@ const fishCatchSchema = new Schema(
     {
         reservoirName: { type: String, minLength: [3, 'Reservoir Name must be at least 3 characters'], trim: true },
         region: { type: String, required: [true, 'Region is required'], trim: true },
+        hoursFished: {
+            type: Number,
+            required: [true, 'Fishing hours are required'],
+            validate: {
+                validator: (value) => value >= 1 && value <= 72,
+                message: 'Fishing hours should be between 1 and 72',
+            },
+            trim: true,
+        },
+        weather: { type: String, required: [true, 'Weather is required'], trim: true },
         fishSpecie: { type: String, required: [true, 'Fish Specie is required'], trim: true },
         fishWeight: {
             type: Number,
@@ -18,6 +28,7 @@ const fishCatchSchema = new Schema(
             },
             trim: true,
         },
+        fishBait: { type: String, required: [true, 'Fish bait is required'], trim: true },
         imageUrl: {
             type: String,
             required: [true, 'Image URL is required'],
@@ -34,7 +45,7 @@ const fishCatchSchema = new Schema(
         },
         details: {
             type: String,
-            maxLength: [100, 'Details should exceed 100 characters'],
+            maxLength: [500, 'Details should not exceed 500 characters'],
             trim: true,
         },
         owner: { type: ObjectId, ref: 'User', required: true },

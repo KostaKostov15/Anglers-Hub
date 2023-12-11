@@ -33,7 +33,7 @@ export default function ProfileCatches() {
 
             {userCatches.length === 0 && !isLoading && (
                 <p className={styles['catches-info']}>
-                    No catches yet! <Link to={Path.CatchCreate}>Click Here</Link> to create one
+                    No catches yet! Click <Link to={Path.CatchCreate}>here</Link> to create one
                 </p>
             )}
 
