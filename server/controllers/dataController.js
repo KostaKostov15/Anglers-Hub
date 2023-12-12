@@ -57,7 +57,6 @@ dataController.get('/user/:userId', async (req, res) => {
 dataController.get('/:category/:search', async (req, res) => {
     try {
         const query = { [req.params.category]: { $regex: `${req.params.search}`, $options: 'i' } };
-        console.log(query);
         const data = await getByQuery(query);
         res.json(data);
     } catch (err) {
