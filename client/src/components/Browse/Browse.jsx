@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { getAll } from '../../services/dataService';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import BrowseItem from './BrowseItem/BrowseItem';
+import Search from './Search/Search';
 import Loader from '../Loader/Loader';
+
+import { getAll } from '../../services/dataService';
 import Path from '../../paths';
-import { Link } from 'react-router-dom';
 
 export default function Browse() {
     const [catches, setCatches] = useState([]);
@@ -24,10 +25,16 @@ export default function Browse() {
         fetchData();
     }, []);
 
+    const searchCatchesHandler = (foundCatches) => {
+        setCatches(foundCatches);
+    };
+
     return (
         <div className='bg-white'>
-            <div className='mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-14 lg:max-w-7xl lg:px-8'>
+            <div className='mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8'>
                 <h2 className='sr-only'>Browse</h2>
+
+                <Search searchHandler={searchCatchesHandler} />
 
                 {isLoading ? (
                     <Loader />
@@ -42,7 +49,7 @@ export default function Browse() {
                         ) : (
                             <div>
                                 <h2 className='text-3xl text-center py-4 font-bold tracking-tight text-slate-600 sm:text-5xl'>
-                                    No catches created yet...
+                                    No catches found...
                                 </h2>
                                 <p className='text-2xl text-center'>
                                     Click{' '}

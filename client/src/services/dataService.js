@@ -26,6 +26,18 @@ export async function getLatest() {
     return result;
 }
 
+export async function getByQuery(category, search) {
+    let result;
+
+    if (search) {
+        result = await request.get(host + `/data/${category}/${search}`);
+    } else {
+        result = await getAll();
+    }
+
+    return result;
+}
+
 export async function create(data) {
     const result = await request.post(host + '/data', data);
 
