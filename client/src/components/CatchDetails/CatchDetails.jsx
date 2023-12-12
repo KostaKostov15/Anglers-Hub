@@ -13,6 +13,7 @@ import {
     UserCircleIcon,
     HandThumbUpIcon,
     HandThumbDownIcon,
+    ChevronRightIcon,
 } from '@heroicons/react/24/outline';
 import Path from '../../paths';
 import Loader from '../Loader/Loader';
@@ -210,11 +211,24 @@ export default function CatchDetails() {
                         </div>
 
                         <div className='py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6'>
+                            {/* Hours Fished */}
+                            <div className='mt-5'>
+                                <h2 className='text-lg font-semibold text-gray-900'>Hours Fished</h2>
+
+                                <div className='flex justify-start items-center mt-2 pl-2 gap-2'>
+                                    <ChevronRightIcon className='h-4 w-4'></ChevronRightIcon>
+                                    <p className='text-base font-medium text-gray-600 capitalize'>
+                                        {catchDetails.hoursFished}
+                                    </p>
+                                </div>
+                            </div>
+
                             {/* Weather */}
-                            <div className='mt-6'>
+                            <div className='mt-5'>
                                 <h2 className='text-lg font-semibold text-gray-900'>Weather</h2>
 
-                                <div className='flex justify-start items-center mt-4 pl-2'>
+                                <div className='flex justify-start items-center mt-2 pl-2 gap-2'>
+                                    <ChevronRightIcon className='h-4 w-4'></ChevronRightIcon>
                                     <p className='text-base font-medium text-gray-600 capitalize'>
                                         {catchDetails.weather}
                                     </p>
@@ -222,10 +236,11 @@ export default function CatchDetails() {
                             </div>
 
                             {/* Fish bait */}
-                            <div className='mt-6'>
+                            <div className='mt-5'>
                                 <h2 className='text-lg font-semibold text-gray-900'>Bait</h2>
 
-                                <div className='flex justify-start items-center mt-4 pl-2'>
+                                <div className='flex justify-start items-center mt-2 pl-2 gap-2'>
+                                    <ChevronRightIcon className='h-4 w-4'></ChevronRightIcon>
                                     <p className='text-base font-medium text-gray-600 capitalize'>
                                         {catchDetails.fishBait}
                                     </p>
@@ -233,19 +248,19 @@ export default function CatchDetails() {
                             </div>
 
                             {/* Details */}
-                            <div className='mt-6'>
+                            <div className='mt-5'>
                                 <h2 className='text-lg font-semibold text-gray-900'>Details</h2>
 
-                                <div className='mt-4 space-y-6 pl-2'>
+                                <div className='mt-2 space-y-1 pl-2'>
                                     <p className='text-base font-medium text-gray-600'>{catchDetails.details}</p>
                                 </div>
                             </div>
 
                             {/* Creation info */}
-                            <div className='mt-6'>
+                            <div className='mt-5'>
                                 <h2 className='text-lg font-semibold text-gray-900'>Creation Info</h2>
 
-                                <div className='mt-4 space-y-6 pl-2'>
+                                <div className='mt-2 space-y-1 pl-2'>
                                     <div className='flex items-center gap-4'>
                                         <UserCircleIcon className='h-5 w-5'></UserCircleIcon>
                                         <p className='text-base font-medium text-gray-600'>
