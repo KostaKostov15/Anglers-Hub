@@ -190,7 +190,7 @@ export default function CatchDetails() {
                                 </div>
                             )}
                             <p className='mt-3 text-xl tracking-tight text-gray-900 text-center'>
-                                Total Likes: <span className='ml-2 text-sky-700 text-3xl'>{catchLikes}</span>
+                                Likes: <span className='ml-2 text-sky-700 text-3xl'>{catchLikes}</span>
                             </p>
 
                             {/* Actions - edit, delete */}

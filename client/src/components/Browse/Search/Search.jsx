@@ -5,7 +5,7 @@ import { getByQuery } from '../../../services/dataService';
 
 export default function Search({ searchHandler }) {
     const [searchValue, setSearchValue] = useState('');
-    const [categoryOption, setCategoryOption] = useState('region');
+    const [categoryOption, setCategoryOption] = useState('fishSpecie');
 
     const changeSearchHandler = (e) => {
         setSearchValue(e.target.value);
@@ -22,7 +22,7 @@ export default function Search({ searchHandler }) {
     };
 
     return (
-        <form className='mw-auto mb-8' onSubmit={(e) => e.preventDefault()}>
+        <form className='mw-auto mb-8' autoComplete='off' onSubmit={(e) => e.preventDefault()}>
             <div className='flex'>
                 <div className='relative w-full flex'>
                     <select
@@ -31,10 +31,10 @@ export default function Search({ searchHandler }) {
                         value={categoryOption}
                         onChange={changeCategoryHandler}
                         className='block w-1/4 rounded-s-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-base sm:leading-6'>
-                        <option value='region'>Location</option>
-                        <option value='reservoirName'>Reservoir Name</option>
                         <option value='fishSpecie'>Fish Specie</option>
-                        <option value='fishBait'>Bait</option>
+                        <option value='region'>Area / Province</option>
+                        <option value='reservoirName'>Reservoir Name</option>
+                        <option value='fishBait'>Fish Bait</option>
                     </select>
                     <input
                         type='search'
@@ -43,7 +43,7 @@ export default function Search({ searchHandler }) {
                         onChange={changeSearchHandler}
                         value={searchValue}
                         className='block w-full  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6'
-                        placeholder='Search Locations, Fish Species, Baits...'
+                        placeholder='Search'
                     />
 
                     <button
